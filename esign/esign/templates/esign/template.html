@@ -1,9 +1,11 @@
 <!DOCTYPE html>
+{% load staticfiles%}
+
 <html>
  <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-  <link rel="stylesheet" type="text/css" href="template_style.css">
-  <link rel="stylesheet" type="text/css" href="section_style.css">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/template_style.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'section_style.css' %}">
   <script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
 
   <!--[if lt IE 8]>
@@ -46,7 +48,8 @@
   </div>
   <div id="content_area">
     <div id="content">
-      здесь будет содержимое каждого раздела
+        {% block 'content' %}
+        {% endblock %}
     </div>
   </div>
   <div id="footer">
