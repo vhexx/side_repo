@@ -7,6 +7,8 @@
   <link rel="stylesheet" type="text/css" href="{% static 'css/template_style.css' %}">
   <link rel="stylesheet" type="text/css" href="{% static 'section_style.css' %}">
   <script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
+  <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+  <script src="fmenu.js" type="text/javascript"></script>
 
   <!--[if lt IE 8]>
     <style>
@@ -69,26 +71,26 @@
       <div id="show_yur">юр. лицо</div>
       /
       <div id="show_ip">ИП</div>
-      <form name="cart_form" id="cform">
-        <div id="fiz" class="floating_block">
-          <input type="button" class="close_flblock" id="close_fiz" value="-">
-          подпись 1 и описание</br>
-          введите количество<input type="text" name="num1">
-        </div>
-        <div id="yur" class="floating_block">
-          <input type="button" class="close_flblock" id="close_yur" value="-">
-          подпись 2 и описание</br>
-          введите количество<input type="text" name="num2">
-        </div>
-        <div id="ip" class="floating_block">
-          <input type="button" class="close_flblock" id="close_ip" value="-">
-          подпись 3 и описание</br>
-          введите количество<input type="text" name="num3">
-        </div>
-        <div id="order_button"><input type="button" value="заказать"></div>
-      </form>
-    </div>
-    <div id="show_menu">заказать прямо сейчас!</div>  
+     </div>
+     <form name="cart_form" id="cform">
+      <div id="fiz" class="floating_block">
+         <input type="button" class="close_flblock" id="close_fiz" value="-">
+         подпись 1 и описание</br>
+         введите количество<input type="text" name="num1">
+       </div>
+       <div id="yur" class="floating_block">
+         <input type="button" class="close_flblock" id="close_yur" value="-">
+         подпись 2 и описание</br>
+         введите количество<input type="text" name="num2">
+       </div>
+       <div id="ip" class="floating_block">
+         <input type="button" class="close_flblock" id="close_ip" value="-">
+         подпись 3 и описание</br>
+         введите количество<input type="text" name="num3">
+       </div>
+       <div id="order_button"><input type="button" value="заказать"></div>
+     </form>
+    <div id="show_menu">заказать прямо сейчас!</div>
   </div>
 <!--CART-->
   <div id="cart">
