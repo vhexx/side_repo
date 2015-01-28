@@ -32,7 +32,7 @@ a
 	top : 100px;
 	left : 50px;
 	font-size : 40px;
-	min-width: 600px;
+	width: 400px;
 }
 #contacts
 {
@@ -115,13 +115,7 @@ a
 	right : -230px;
 	top : 50%;
 	font-size: 15px;
-}
-#hidden_menu
-{
-	display : block;
-	width : 230px;
-	height : 40px;
-	background-color : #ffff00;
+	z-index: 0;
 }
 #show_menu
 {
@@ -133,6 +127,16 @@ a
 	display : block;
 	background-color : #ffff00;
 }
+#hidden_menu
+{
+	position: relative;
+	display : block;
+	width : 230px;
+	height : 40px;
+	top : 0px;
+	background-color : #ffff00;
+	z-index: 1;
+}
 #show_fiz, #show_yur, #show_ip
 {
 	display : inline;
@@ -140,12 +144,13 @@ a
 .floating_block
 {
 	position : absolute;
-	top : 40px;
+	top : 0px;
 	width : 220px;
 	height : 70px;
 	display : block;
 	background-color : #ffff00;
 	padding-left : 10px;
+	z-index: 0;
 }
 .close_flblock
 {
@@ -159,10 +164,10 @@ a
 #order_button
 {
 	position : absolute;
-	top : 110px;
-	width : 160px;
+	text-align: center;
+	top : 70px;
+	width : 230px;
 	height : 30px;
-	padding-left : 70px;
 	background-color: #ffff00;
 	display : block;
 }
