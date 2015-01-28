@@ -60,7 +60,7 @@ $(document).ready(function ()
     fhidden.ob.css({"z-index" : min_zindx});
     var fblocks_init_top = flb.eq(0).css("top");
     var showed_fblocks_num = 0;
-    const fmenu_speed = 500;
+    var fmenu_speed = 500;
     //выплывание всего меню
     fshow.ob.click(function ()
       {
