@@ -132,7 +132,8 @@ a
 #show_menu #show_menu_bkg
 {
 	background-color: transparent;
-	background-image: url(pen.png);
+	background-image: url(../img/pen.png);
+        background-image: url({% static 'img/pen.png' %});
 	height : 54px;
 	width : 441px;
 	display : block;
@@ -174,7 +175,8 @@ a
 	height : 80px;
 	display: block;
 	background-color: transparent;
-	background-image: url(spring.png);
+	background-image: url(../img/spring.png);
+        background-image: url({% static 'img/spring.png' %});
 	top : -80px;
 	left : -5px;
 }
