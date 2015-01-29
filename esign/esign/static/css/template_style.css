@@ -206,7 +206,8 @@ a
 	height : 30px;
 	width : 30px;
 	left : -23px;
-	background-image: url(angle.png);
+	background-image: url(../img/angle.png);
+        background-image: url({% static 'img/angle.png' %});
 	opacity : 1.0;
 }
 .close_flblock
