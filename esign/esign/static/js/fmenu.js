@@ -147,6 +147,7 @@ $(document).ready(function ()
           fblocks[opened_indx].vsbl = 1;
           max_zindx += 1;
           var opened_top = getcss_px(fblocks[opened_indx].ob, "top");
+          fblocks[opened_indx].ob.show();
           fblocks[opened_indx].ob.css({"z-index" : max_zindx, "top" : (opened_top+fblocks_cur_shift+fblocks_dist)+"px"});
           fmenu_anim_show(fblocks[opened_indx].ob);
           fblocks[opened_indx].z_index = max_zindx;
