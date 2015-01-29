@@ -33,40 +33,47 @@ function elem (elem_selector)
 }
 function fmenu_anim_show (obj)
 {
-  init_left = getcss_px(obj, "left");
-  init_top = getcss_px(obj, "top");
-  init_hgt = getcss_px(obj, "height");
-  init_wdt = getcss_px(obj, "width");
+  var init_left = getcss_px(obj, "left");
+  var init_top = getcss_px(obj, "top");
+  var init_height = getcss_px(obj, "height");
+  var init_width = getcss_px(obj, "width");
+  obj.show();
   obj.css({"top" : (init_top-50)+"px",
            "left" : (init_left-50)+"px",
-           "width" : (init_wdt-50)+"px",
-           "height" : (init_hgt-20)+"px",
+           "width" : (init_width-50)+"px",
+           "height" : (init_height-20)+"px",
            "opacity" : "0.0"
-         }
-  );
+         });
   obj.animate({"top" : (init_top)+"px",
            "left" : (init_left)+"px",
-           "width" : (init_wdt)+"px",
-           "height" : (init_hgt)+"px",
+           "width" : (init_width)+"px",
+           "height" : (init_height)+"px",
            "opacity" : "1.0"
-         }, 200
-  );
+         }, {duration : 200, queue : true, complete : function ()
+          {
+            obj.css({"left" : init_left+"px", "top" : init_top+"px", "height" : init_height+"px", "width" : init_width+"px"});
+          }
+        }
+        );
 }
 function fmenu_anim_hide (obj, res_css)
 {
-  obj.animate({"top" : (getcss_px(obj, "top")-50)+"px",
-               "left" : (getcss_px(obj, "left")-50)+"px",
-               "height" : (getcss_px(obj, "height")-20)+"px",
-               "width" : (getcss_px(obj, "width")-50)+"px",
+  var init_top = getcss_px(obj, "top");
+  var init_left = getcss_px(obj, "left");
+  var init_height = getcss_px(obj, "height");
+  var init_width = getcss_px(obj, "width");
+  obj.animate({"top" : (init_top-50)+"px",
+               "left" : (init_left-50)+"px",
+               "height" : (init_height-20)+"px",
+               "width" : (init_width-50)+"px",
                "opacity" : "0.0"
-              },
-    200,
-    function ()
-    {
-      obj.hide();
-      obj.css(res_css);
-      obj.css({"opacity" : "1.0"});
-    }
+              }, {duration : 200, queue : true, complete : function ()
+                {
+                  obj.css(res_css);
+                  obj.css({"opacity" : "1.0"});
+                  obj.hide();
+                }
+              }
   );
 }
 $(document).ready(function ()
@@ -101,25 +108,31 @@ $(document).ready(function ()
     //выплывание всего меню
     fshow.ob.click(function ()
       {
-        alert(" "+fblocks_cur_shift+" "+(fblocks["fiz"].hgt+1)+" "+(fblocks["yur"].hgt+1)+" "+(fblocks["ip"].hgt+1)+" "+fblocks_dist);
-        alert(" "+(getcss_px(fblocks["fiz"].ob, "top")+1)+" "+(getcss_px(fblocks["fiz"].ob, "left")+1));
-        alert(" "+(getcss_px(fblocks["yur"].ob, "top")+1)+" "+(getcss_px(fblocks["yur"].ob, "left")+1));
-        alert(" "+(getcss_px(fblocks["ip"].ob, "top")+1)+" "+(getcss_px(fblocks["ip"].ob, "left")+1));
         if (fmenu.vsbl == 0)
         {
-          fmenu.ob.animate({"right" : (getcss_px(fmenu.ob, "right")+fhidden.wdt)+"px"}, 300, function ()
+          fmenu.ob.animate({"right" : (getcss_px(fmenu.ob, "right")+fhidden.wdt)+"px"}, {duration : 300,
+            queue : true,
+            complete : function ()
             {
-              fshow.ob.find("#show_menu_bkg #show_menu_text").html("скрыть");
+              {
+                fshow.ob.find("#show_menu_bkg #show_menu_text").html("скрыть");
+              }
             }
+          }
           );
           fmenu.vsbl = 1;
         }
         else
         {
-          fmenu.ob.animate({"right" : (getcss_px(fmenu.ob, "right")-fhidden.wdt)+"px"}, 300, function ()
+          fmenu.ob.animate({"right" : (getcss_px(fmenu.ob, "right")-fhidden.wdt)+"px"}, {duration : 300,
+            queue : true,
+            complete : function ()
             {
-              fshow.ob.find("#show_menu_bkg #show_menu_text").html("заказать прямо сейчас!");
+              {
+                fshow.ob.find("#show_menu_bkg #show_menu_text").html("заказать прямо сейчас!");
+              }
             }
+          }
           );
           fmenu.vsbl = 0;
         }
@@ -133,9 +146,9 @@ $(document).ready(function ()
         {
           fblocks[opened_indx].vsbl = 1;
           max_zindx += 1;
-          fblocks[opened_indx].ob.css({"z-index" : max_zindx, "top" : (getcss_px(fblocks[opened_indx].ob, "top")+fblocks_cur_shift+fblocks_dist)+"px"});
+          var opened_top = getcss_px(fblocks[opened_indx].ob, "top");
+          fblocks[opened_indx].ob.css({"z-index" : max_zindx, "top" : (opened_top+fblocks_cur_shift+fblocks_dist)+"px"});
           fmenu_anim_show(fblocks[opened_indx].ob);
-          fblocks[opened_indx].ob.show();
           fblocks[opened_indx].z_index = max_zindx;
           fblocks_cur_shift += (fblocks[opened_indx].hgt+fblocks_dist);
           if (showed_fblocks_num == 0)
@@ -146,13 +159,14 @@ $(document).ready(function ()
             setTimeout(function ()
               {
                 fbutton.ob.show();
-                fbutton.ob.animate({"height" : fbtn_hgt+"px"}, 200);
+                fbutton.ob.animate({"height" : fbtn_hgt+"px"}, {duration : 200, queue : true});
               }, 200);
             fbutton.vsbl = 1;
           }
           else
           {
-            fbutton.ob.animate({"top" : (getcss_px(fbutton.ob, "top")+fblocks[opened_indx].hgt+fblocks_dist)+"px"}, 200);
+            var fbtn_top = getcss_px(fbutton.ob, "top");
+            fbutton.ob.animate({"top" : (fbtn_top+fblocks[opened_indx].hgt+fblocks_dist)+"px"}, {duration : 200, queue : true});
           }
           showed_fblocks_num += 1;
         }
@@ -167,23 +181,26 @@ $(document).ready(function ()
           var closed_zindx = fblocks[closed_indx].z_index;
           var indx;
           fblocks[closed_indx].vsbl = 0;
+          fblocks_cur_shift -= (fblocks[closed_indx].hgt+fblocks_dist);
           for (indx in fblocks)
           {
             if ((fblocks[indx].z_index > closed_zindx) && (fblocks[indx].vsbl == 1))
             {
               fblocks[indx].z_index -= 1;
               fblocks[indx].ob.css({"z_index" : fblocks[indx].z_index});
-              fblocks[indx].ob.animate({"top" : (getcss_px(fblocks[indx].ob, "top")-fblocks[closed_indx].hgt-fblocks_dist)+"px"}, 200);
+              var top_after_shift = (getcss_px(fblocks[indx].ob, "top")-fblocks[closed_indx].hgt-fblocks_dist);
+              fblocks[indx].ob.animate({"top" : top_after_shift+"px"}, {duration : 200, queue : true});
             }
           }
           max_zindx -= 1;
           fblocks[closed_indx].z_index = fblocks_init_zindx;
           var closed_hgt = fblocks[closed_indx].hgt;
-          fmenu_anim_hide(fblocks[closed_indx].ob, {"z-index" : fblocks_init_zindx, "top" : fblocks_init_top, "left" : fblocks[closed_indx].ob.css("left"), "height" : (closed_hgt)+"px", "width" : fblocks[closed_indx].wdt+"px"});
-          fblocks_cur_shift -= (fblocks[closed_indx].hgt+fblocks_dist);
+          var closed_wdt = fblocks[closed_indx].wdt;
+          var closed_left = fblocks[closed_indx].ob.css("left");
+          fmenu_anim_hide(fblocks[closed_indx].ob, {"z-index" : fblocks_init_zindx, "top" : fblocks_init_top, "left" : closed_left, "height" : closed_hgt, "width" : closed_wdt});
           if (showed_fblocks_num > 1)
           {
-            fbutton.ob.animate({"top" : (getcss_px(fbutton.ob, "top")-fblocks[closed_indx].hgt-fblocks_dist)+"px"}, 200);
+            fbutton.ob.animate({"top" : (getcss_px(fbutton.ob, "top")-closed_hgt-fblocks_dist)+"px"}, 200);
           }
           else
           {
