@@ -112,45 +112,100 @@ a
 #floating_menu
 {
 	position: fixed;
-	right : -230px;
+	right : -250px;
 	top : 50%;
 	font-size: 15px;
 	z-index: 0;
 }
 #show_menu
 {
-	position : relative;
-	left : -100px;
-	top : -40px;
-	width : 100px;
+	position : absolute;
+	left : -165px;
+	top : -90px;
+	width : 165px;
 	height : 40px;
 	display : block;
-	background-color : #ffff00;
+	background-color : transparent;
+	cursor : pointer;
+	text-align: left;
+}
+#show_menu #show_menu_bkg
+{
+	background-color: transparent;
+	background-image: url(pen.png);
+	height : 54px;
+	width : 441px;
+	display : block;
+}
+#show_menu #show_menu_bkg #show_menu_text
+{
+	position : absolute;
+	text-align: center;
+	width : 180px;
+	font-size: 20px;
+	padding-top: 10px;
+	color : #ff0000;
+	font-family: sans-serif;
 }
 #hidden_menu
 {
 	position: relative;
 	display : block;
-	width : 230px;
-	height : 40px;
+	width : 240px;
+	height : 20px;
+	padding-bottom: 5px;
 	top : 0px;
-	background-color : #ffff00;
+	text-align: center;
+	margin-top: -10px;
+	border : 5px solid #888888;
+	background-color : #ffffff;
+	color : #000000;
+	border-radius: 7px;
 	z-index: 1;
+	font-size: 16px;
+	font-family: sans-serif;
+	font-weight: bold;
+	cursor : default;
 }
-#show_fiz, #show_yur, #show_ip
+#hidden_menu #hidden_menu_bkg
+{
+	position : absolute;
+	width : 260px;
+	height : 80px;
+	display: block;
+	background-color: transparent;
+	background-image: url(spring.png);
+	top : -80px;
+	left : -5px;
+}
+.show_floating_block
 {
 	display : inline;
+	cursor : pointer;
+	text-decoration: underline;
 }
 .floating_block
 {
 	position : absolute;
 	top : 0px;
+	left : 0px;
 	width : 220px;
 	height : 70px;
 	display : block;
-	background-color : #ffff00;
+	background-color : #9BDCE4;
 	padding-left : 10px;
+	border-radius: 7px;
 	z-index: 0;
+}
+.floating_block .angle
+{
+	position : absolute;
+	display : block;
+	height : 30px;
+	width : 30px;
+	left : -23px;
+	background-image: url(angle.png);
+	opacity : 1.0;
 }
 .close_flblock
 {
@@ -165,10 +220,11 @@ a
 {
 	position : absolute;
 	text-align: center;
-	top : 70px;
+	top : 75px;
+	left : 0px;
 	width : 230px;
 	height : 30px;
-	background-color: #ffff00;
+	background-color: transparent;
 	display : block;
 }
 /*cart style*/
