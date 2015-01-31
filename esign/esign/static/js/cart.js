@@ -11,7 +11,7 @@ function addtocart (prod_id, prod_num, prod_name)
 			{
 				new_num = parseInt(cur_div[1])+prod_num;
 				$(this).attr({"id" : prod_id+"-"+new_num});
-				$(this).find(".order_cnt").attr({"value" : new_num});
+				$(this).find(".order_cnt").val(new_num);
 				id_check = 1;
 			}
 		}
@@ -19,18 +19,18 @@ function addtocart (prod_id, prod_num, prod_name)
 	if (id_check == 0)
 	{
 	  	var new_item = $("<div>", {"id" : prod_id+"-"+prod_num, "class" : "item"}).appendTo("#cart #orders_list");
-	  	new_item.load("../../templates/esign/cart_item_form.html", function ()
-	  	{
-	  		new_item.find(".order_cnt").attr({"value" : prod_num});
-	  	    new_item.find(".order_txt").html(prod_name);
-	  	});
+	  	var new_form = $("<form>", {"class" : "item_form"}).appendTo(new_item);
+	  	$("<div>", {"class" : "order_txt", "text" : prod_name}).appendTo(new_form);
+	  	$("<input>", {"class" : "order_cnt", "type" : "text", "value" : prod_num}).appendTo(new_form);
+	  	$("<input>", {"class" : "change_cnt", "type" : "button", "value" : "изменить"}).appendTo(new_form);
+	  	$("<input>", {"class" : "remove_order", "type" : "button", "value" : "убрать"}).appendTo(new_form);
 	}
 }
 $(document).ready(function ()
 	{
 		var product_names_array = {fiz : "подпись физ. лица", yur : "подпись юр. лица", ip : "подпись ИП"};
 //клик в одной из форм раздела "оформить заказ"
-        $("#cart #orders_list").hide();
+        //$("#cart #orders_list").hide();
         var cart_orders_vsbl = 0;
 		$("#products_list .product input:button").click(function ()
 			{
