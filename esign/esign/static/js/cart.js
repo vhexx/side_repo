@@ -34,8 +34,12 @@ $(document).ready(function ()
 				{
 					prod_name = product_names_array[prod_id];
 					addtocart(prod_id, prod_num, prod_name);
+					send = prod_id+":+"+prod_num;
 				}
-				var send = prod_id+":+"+prod_num;
+				else
+				{
+					send = prod_id+":+0";
+				}
 			}
 		);
 		$("#orders_list").on("click", ".item .remove_order", function ()
