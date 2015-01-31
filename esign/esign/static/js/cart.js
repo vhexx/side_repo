@@ -19,17 +19,19 @@ function addtocart (prod_id, prod_num, prod_name)
 	if (id_check == 0)
 	{
 	  	var new_item = $("<div>", {"id" : prod_id+"-"+prod_num, "class" : "item"}).appendTo("#cart #orders_list");
-	  	new_item.load("../../templates/esign/cart_item_form.html");
-	  	setTimeout(function () {
+	  	new_item.load("../../templates/esign/cart_item_form.html", function ()
+	  	{
 	  		new_item.find(".order_cnt").attr({"value" : prod_num});
 	  	    new_item.find(".order_txt").html(prod_name);
-	  	}, 50);
+	  	});
 	}
 }
 $(document).ready(function ()
 	{
 		var product_names_array = {fiz : "подпись физ. лица", yur : "подпись юр. лица", ip : "подпись ИП"};
 //клик в одной из форм раздела "оформить заказ"
+        $("#cart #orders_list").hide();
+        var cart_orders_vsbl = 0;
 		$("#products_list .product input:button").click(function ()
 			{
 				var prod_id = $(this).parent().parent().attr("id").split('_')[0];
@@ -40,6 +42,9 @@ $(document).ready(function ()
 					addtocart(prod_id, prod_num, prod_name);
 //------------------------------------------------------------					
 					send = prod_id+":+"+prod_num;
+					var cart_items_cnt = $("#cart #cart_image #cart_items_count").text();
+					cart_items_cnt = parseInt(cart_items_cnt)+prod_num;
+					$("#cart #cart_image #cart_items_count").html(cart_items_cnt);
 				}
 				else
 				{
@@ -57,24 +62,50 @@ $(document).ready(function ()
 //------------------------------------------------------------				
 				var send = prod_id+":-"+prod_num;
 				$(this).parent().parent().remove();
+				var cart_items_cnt = $("#cart #cart_image #cart_items_count").text();
+				cart_items_cnt = parseInt(cart_items_cnt)-prod_num;
+				$("#cart #cart_image #cart_items_count").html(cart_items_cnt);
 			}
 		);
 //клик на кнопку "поменять" в одном из элементов корзины
 		$("#orders_list").on("click", ".item .change_cnt", function ()
 			{
 				var new_cnt = $(this).parent().find(".order_cnt").val();
+				var prev_cnt = parseInt($(this).parent().parent().attr("id").split("-")[1]);
 				var send;
 				if ((parseInt(new_cnt)) && (new_cnt > 0))
 				{
-					var item_id = $(this).parent().parent().attr("id").split()[0];
+					if (new_cnt.charAt(0) == '+')
+					{
+						new_cnt = new_cnt.substr(1, (new_cnt.length-1));
+					}
+					var item_id = $(this).parent().parent().attr("id").split("-")[0];
 					$(this).parent().parent().attr({"id" : item_id+"-"+new_cnt});
 //------------------------------------------------------------
 					send = item_id+":"+new_cnt;
+					var cart_items_cnt = $("#cart #cart_image #cart_items_count").text();
+					cart_items_cnt = parseInt(cart_items_cnt)+parseInt(new_cnt)-prev_cnt;
+					$("#cart #cart_image #cart_items_count").html(cart_items_cnt);
 				}
 				else
 				{
 //------------------------------------------------------------					
 					send="";
+				}
+			}
+		);
+		$("#cart #show_cart_orders").click(function ()
+			{
+				$(this).parent().find("#orders_list").toggle();
+				if (cart_orders_vsbl == 0)
+				{
+					$(this).attr({"value" : "скрыть"});
+					cart_orders_vsbl = 1;
+				}
+				else
+				{
+					$(this).attr({"value" : "показать"});
+					cart_orders_vsbl = 0;
 				}
 			}
 		);
