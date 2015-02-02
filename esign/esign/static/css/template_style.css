@@ -46,12 +46,13 @@ input[type="text"] {max-width: 30px;}
      height : 20px; text-align : center; display : block; background-color: #999999;}
 	#order_button {top : 70px; position : absolute; text-align: center; left : 0px; width : 230px;
 	 height : 30px; background-color: transparent; display : block;}
-	#show_menu{position : absolute; left : -165px; top : -90px; width : 165px; height : 40px;
+	#show_menu{position : absolute; left : -145px; top : -76px; width : 165px; height : 33px;
 	 display : block; background-color : transparent; cursor : pointer; text-align: left;}
 	#show_menu #show_menu_bkg {background-color: transparent; background-image: url(../img/pen.png);
-     /*background-image: url({% static 'img/pen.png' %});*/ height : 54px; width : 441px; display : block;}
-    #show_menu #show_menu_bkg #show_menu_text {position : absolute; text-align: center; width : 180px;
-	 font-size: 20px; padding-top: 10px; color : #ff0000; font-family: sans-serif;}
+     /*background-image: url({% static 'img/pen.png' %});*/ height : 33px; width : 397px; display : block;}
+    #show_menu #show_menu_bkg #show_menu_text {position : absolute; text-align: center; width : 120px;
+	 font-size: 20px; top: 33px; left : 30px; display: block; background-color: #ffff00;
+	 font-family: sans-serif; font-style: italic;}
 
 	 /*cart style*/
     #cart {position : fixed; left : 10px; bottom : 10px; background-color : #999999; display : block;
