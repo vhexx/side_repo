@@ -1,10 +1,10 @@
-html, body {height : 100%;width : 100%;}
-body {margin : 0%; background-color: #aaaaaa;}
+html, body {height : auto; width : 100%;}
+body {margin : 0%; background-color: #888888;}
 a {color : #000000;}
+input[type="text"] {max-width: 30px;}
 /*for all screen sizes*/
-
     /*page style*/
-    #page_container {width : 100%; height : 100%; display : block;}
+    #page_container {width : 100%; height : 100%; display : block; background: linear-gradient(to top, #777777, #dddddd);}
     #header {width : 100%; background-color: #63C2FF; display : block; height : 250px; position: relative;}
     #header_content {display : block; width : 1200px; height : 100%; position : absolute; left : 50%; margin-left: -600px;}
     #name {position: absolute; left : 10%; top : 60%; font-size: 30px; display: block; width : 500px;}
@@ -12,13 +12,14 @@ a {color : #000000;}
 	#content_area {width : 1000px; left : 50%; margin-left: -580px;position : relative;
 	 display : block; min-height : 500px; background-color : #ffffff; border-radius: 10px;}
 	#content {font-size : 10px; padding : 10px 10px 10px 10px; width : 100%; height : 100%; display: block;}
-	#navigation {font-size: 0px; top: -32px; position : absolute; right : 10px; display : table;
+	#navigation {font-size: 0px; top: -32px; margin-top: -3px; position : absolute; right : 10px; display : table;
 	 background-color: transparent; text-align: right;}
-	.sect {font-size: 16px; height : 1.5em; padding-top: 0.5em;display : inline-block;
+	.sect {font-size: 16px; height : 1.5em; padding : 0.5em 0.5em 0em 0.5em; display : inline-block;
 	 vertical-align: center; text-align: center; background-color : #A8EFE1; font-family: sans-serif;
-	 font-weight: normal; color : #132421; cursor : pointer;
-	 /*border-width : 3px; border-style: solid; border-color : #E0FFF6 #82C2C1 #679C9B #C3FFED;*/}
-	#footer {position: relative; display : block; min-height: 150px; width : 100%; background-color: #777777;}
+	 font-weight: bold; color : #16454C; cursor : pointer;
+	 border-width : 3px 3px 0px 3px; border-style: solid; border-color : #E0FFF6 #82C2C1 #679C9B #C3FFED;
+	 border-radius: 7px 7px 0px 0px;}
+	#footer {position: relative; display : block; min-height: 150px; width : 100%; background-color: transparent;}
 	#footer_content {position: absolute; display: block; width : 1200px; left : 50%; margin-left: -600px;}
 	#bottom_logo, #links {display : inline;}
     #links a {margin-left : 600px; display : block;}
@@ -31,23 +32,24 @@ a {color : #000000;}
 	 z-index: 1; font-size: 16px; font-family: sans-serif; font-weight: bold; cursor : default;}
 	#hidden_menu #hidden_menu_bkg {position : absolute; width : 260px; height : 80px; display: block;
 	 background-color: transparent; background-image: url(../img/spring.png);
-	 background-image: url({% static 'img/spring.png' %}); top : -80px; left : -5px;}
+	 /*background-image: url({% static 'img/spring.png' %});*/ top : -80px; left : -5px;}
 	.show_floating_block {display : inline; cursor : pointer; text-decoration: underline;}
 	.floating_block {width : 230px; height : 60px; font-size: 14px; position : absolute;
 	 top : 0px; left : 0px; display : block; background-color : transparent; z-index: 0; opacity : 1.0;}
 	.floating_block .angle {position : absolute; display : block; height : 30px; width : 30px; left : 0px;
-	 top : 0px; background-image: url(../img/angle.png); background-image: url({% static 'img/angle.png' %});
+	 top : 0px; background-image: url(../img/angle.png); /*background-image: url({% static 'img/angle.png' %});*/
 	 opacity : 1.0;}
     .floating_block .flblock_text { background-color : #9BDCE4; position : absolute; left : 20px;
-     display : block; width : auto; height : 100%; padding-left : 10px; border-radius: 7px;}
-    .floating_block .flblock_text .close_flblock {position : absolute; right : 0px; width : 20px; height : 20px;
-	 text-align : center; display : block; background-color: #999999;}
+     display : block; width : auto; max-width: 100%; height : 100%; padding : 3px; border-radius: 7px;}
+    .floating_block .flblock_text input[type="text"] {margin-left: 10px;}
+    .floating_block .flblock_text .close_flblock {position : absolute; right : 0px; top: 0px; width : 20px;
+     height : 20px; text-align : center; display : block; background-color: #999999;}
 	#order_button {top : 70px; position : absolute; text-align: center; left : 0px; width : 230px;
 	 height : 30px; background-color: transparent; display : block;}
 	#show_menu{position : absolute; left : -165px; top : -90px; width : 165px; height : 40px;
 	 display : block; background-color : transparent; cursor : pointer; text-align: left;}
 	#show_menu #show_menu_bkg {background-color: transparent; background-image: url(../img/pen.png);
-     background-image: url({% static 'img/pen.png' %}); height : 54px; width : 441px; display : block;}
+     /*background-image: url({% static 'img/pen.png' %});*/ height : 54px; width : 441px; display : block;}
     #show_menu #show_menu_bkg #show_menu_text {position : absolute; text-align: center; width : 180px;
 	 font-size: 20px; padding-top: 10px; color : #ff0000; font-family: sans-serif;}
 
