@@ -10,15 +10,16 @@ input[type="text"] {max-width: 30px;}
     #name {position: absolute; left : 10%; top : 60%; font-size: 30px; display: block; width : 500px;}
     #contacts {position: absolute; left : 60%; top : 70%; width : 250px; display: block;}
 	#content_area {width : 1000px; left : 50%; margin-left: -580px;position : relative;
-	 display : block; min-height : 500px; background-color : #ffffff; border-radius: 10px;}
+	 display : block; min-height : 500px; background-color : #ffffff; border-radius: 10px;
+	 /*border : 1px solid #777777;*/}
 	#content {font-size : 10px; padding : 10px 10px 10px 10px; width : 100%; height : 100%; display: block;}
-	#navigation {font-size: 0px; top: -32px; margin-top: -3px; position : absolute; right : 10px; display : table;
+	#navigation {font-size: 0px; top: -32px; position : absolute; right : 10px; display : table;
 	 background-color: transparent; text-align: right;}
 	.sect {font-size: 16px; height : 1.5em; padding : 0.5em 0.5em 0em 0.5em; display : inline-block;
 	 vertical-align: center; text-align: center; background-color : #A8EFE1; font-family: sans-serif;
-	 font-weight: bold; color : #16454C; cursor : pointer;
+	 font-weight: bold; color : #16454C; cursor : pointer; margin-top: -3px;
 	 border-width : 3px 3px 0px 3px; border-style: solid; border-color : #E0FFF6 #82C2C1 #679C9B #C3FFED;
-	 border-radius: 7px 7px 0px 0px;}
+	 border-radius: 7px 7px 0px 0px; /*border : 1px solid #777777; margin-top: -2px;*/}
 	#footer {position: relative; display : block; min-height: 150px; width : 100%; background-color: transparent;}
 	#footer_content {position: absolute; display: block; width : 1200px; left : 50%; margin-left: -600px;}
 	#bottom_logo, #links {display : inline;}

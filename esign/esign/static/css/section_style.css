@@ -1,3 +1,16 @@
+#content
+{
+	position: absolute;
+	left: 20px;
+	right: 20px;
+	top : 20px;
+	bottom: 20px;
+	width: auto;
+	height : auto;
+	box-shadow: inset 2px 2px 10px #888888;
+	border-radius: inherit;
+
+}
 #section_header
 {
 	font-size : 350%;
