@@ -99,7 +99,8 @@ $(document).ready(function ()
       fblocks[indx].ob.hide();
     }
     //инициализация переменных для выплывания элементов
-    var fblocks_cur_shift = fhidden.hgt;
+    var fhidden_init_hgt = fhidden.hgt;
+    var fblocks_cur_shift = fhidden_init_hgt;
     var fblocks_init_zindx = parseInt(flb.eq(0).css("z-index"));
     var max_zindx = fblocks_init_zindx;
     var fblocks_init_top = flb.eq(0).css("top");
@@ -147,16 +148,19 @@ $(document).ready(function ()
           fblocks[opened_indx].vsbl = 1;
           max_zindx += 1;
           var opened_top = getcss_px(fblocks[opened_indx].ob, "top");
+          var fhidden_hgt = fhidden.hgt;
           fblocks[opened_indx].ob.show();
           fblocks[opened_indx].ob.css({"z-index" : max_zindx, "top" : (opened_top+fblocks_cur_shift+fblocks_dist)+"px"});
           fmenu_anim_show(fblocks[opened_indx].ob);
           fblocks[opened_indx].z_index = max_zindx;
           fblocks_cur_shift += (fblocks[opened_indx].hgt+fblocks_dist);
+          fhidden_hgt += fblocks[opened_indx].hgt + fblocks_dist;
           if (showed_fblocks_num == 0)
           {
             var fbtn_top = getcss_px(fbutton.ob, "top");
             var fbtn_hgt = fbutton.hgt;
-            fbutton.ob.css({"top" : (fbtn_top+fhidden.hgt+fblocks_dist)+"px", "height" : "0px"});
+            fhidden_hgt += fbutton.hgt + fblocks_dist;
+            fbutton.ob.css({"top" : (fbtn_top+fhidden_init_hgt+fblocks_dist)+"px", "height" : "0px"});
             setTimeout(function ()
               {
                 fbutton.ob.show();
@@ -169,6 +173,8 @@ $(document).ready(function ()
             var fbtn_top = getcss_px(fbutton.ob, "top");
             fbutton.ob.animate({"top" : (fbtn_top+fblocks[opened_indx].hgt+fblocks_dist)+"px"}, {duration : 200, queue : true});
           }
+          fhidden.hgt = fhidden_hgt;
+          fhidden.ob.animate({"height" : fhidden_hgt+"px"}, 200);
           showed_fblocks_num += 1;
         }
       }
@@ -177,6 +183,8 @@ $(document).ready(function ()
     fmenu.ob.find(".close_flblock").click(function ()
       {
         var closed_indx = cutstr($(this).attr("id"), 6);
+        var fhidden_hgt = fhidden.hgt;
+        fhidden_hgt -= (fblocks[closed_indx].hgt + fblocks_dist);
         if (fblocks[closed_indx].vsbl == 1)
         {
           var closed_zindx = fblocks[closed_indx].z_index;
@@ -207,8 +215,11 @@ $(document).ready(function ()
           {
             var fbutton_top = getcss_px(fbutton.ob, "top");
             var fbutton_hgt = getcss_px(fbutton.ob, "height");
-            fmenu_anim_hide(fbutton.ob, {"top" : (fbutton_top-fhidden.hgt-fblocks_dist)+"px", "left" : fbutton.ob.css("left"), "height" : (fbutton_hgt)+"px", "width" : fbutton.ob.css("width")});
+            fhidden_hgt = fhidden_init_hgt;
+            fmenu_anim_hide(fbutton.ob, {"top" : (fbutton_top-fhidden_init_hgt-fblocks_dist)+"px", "left" : fbutton.ob.css("left"), "height" : (fbutton_hgt)+"px", "width" : fbutton.ob.css("width")});
           }
+          fhidden.hgt = fhidden_hgt;
+          fhidden.ob.animate({"height" : fhidden_hgt+"px"}, 200);
           showed_fblocks_num -= 1;
         }
       }

@@ -30,12 +30,12 @@ input[type="text"] {max-width: 30px;}
 	 padding-bottom: 5px; top : 0px; left : 0px; text-align: center; margin-top: -10px;
 	 border : 5px solid #888888; background-color : #ffffff; color : #000000; border-radius: 7px;
 	 z-index: 1; font-size: 16px; font-family: sans-serif; font-weight: bold; cursor : default;}
-	#hidden_menu #hidden_menu_bkg {position : absolute; width : 260px; height : 80px; display: block;
+	#floating_menu #hidden_menu_bkg {position : absolute; width : 260px; height : 80px; display: block;
 	 background-color: transparent; background-image: url(../img/spring.png);
-	 /*background-image: url({% static 'img/spring.png' %});*/ top : -80px; left : -5px;}
+	 /*background-image: url({% static 'img/spring.png' %});*/ top : -85px; left : 0px; z-index: 2;}
 	.show_floating_block {display : inline; cursor : pointer; text-decoration: underline;}
 	.floating_block {width : 230px; height : 60px; font-size: 14px; position : absolute;
-	 top : 0px; left : 0px; display : block; background-color : transparent; z-index: 0; opacity : 1.0;}
+	 top : 0px; left : 10px; display : block; background-color : transparent; z-index: 0; opacity : 1.0;}
 	.floating_block .angle {position : absolute; display : block; height : 30px; width : 30px; left : 0px;
 	 top : 0px; background-image: url(../img/angle.png); /*background-image: url({% static 'img/angle.png' %});*/
 	 opacity : 1.0;}
@@ -45,7 +45,7 @@ input[type="text"] {max-width: 30px;}
     .floating_block .flblock_text .close_flblock {position : absolute; right : 0px; top: 0px; width : 20px;
      height : 20px; text-align : center; display : block; background-color: #999999;}
 	#order_button {top : 70px; position : absolute; text-align: center; left : 0px; width : 230px;
-	 height : 30px; background-color: transparent; display : block;}
+	 height : 30px; background-color: transparent; display : block; z-index: 3;}
 	#show_menu{position : absolute; left : -145px; top : -76px; width : 165px; height : 33px;
 	 display : block; background-color : transparent; cursor : pointer; text-align: left;}
 	#show_menu #show_menu_bkg {background-color: transparent; background-image: url(../img/pen.png);
