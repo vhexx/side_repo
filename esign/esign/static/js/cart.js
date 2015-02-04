@@ -30,7 +30,7 @@ $(document).ready(function ()
 	{
 		var product_names_array = {fiz : "подпись физ. лица", yur : "подпись юр. лица", ip : "подпись ИП"};
 //клик в одной из форм раздела "оформить заказ"
-        //$("#cart #orders_list").hide();
+        $("#cart #orders_list").hide();
         var cart_orders_vsbl = 0;
 		$("#products_list .product input:button").click(function ()
 			{
