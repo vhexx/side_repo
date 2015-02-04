@@ -27,34 +27,48 @@ input[type="text"] {max-width: 30px;}
 
 	/*floating menu style*/
 	#floating_menu {position: fixed; right : 0px; top : 35%; font-size: 15px; z-index: 0;}
-	#hidden_menu {width : 250px; height : 40px; position: absolute; display : block;
-	 padding-bottom: 5px; top : 0px; left : 0px; text-align: center; margin-top: -10px;
-	 border : 5px solid #888888; background-color : #ffffff; color : #000000; border-radius: 7px;
-	 z-index: 1; font-size: 16px; font-family: sans-serif; font-weight: bold; cursor : default;}
-	#floating_menu #hidden_menu_bkg {position : absolute; width : 260px; height : 80px; display: block;
+	#hidden_menu {width : 230px; height : 35px; position: absolute; display : block; top : 0px; left : 0px;
+	 text-align: center; margin-top: -10px; border : 5px solid #888888;
+	 background-color : #ffffff; color : #000000; border-radius: 7px;
+	 z-index: 1; font-size: 14px; font-family: sans-serif; font-weight: bold; cursor : default;}
+	#hidden_menu_bkg {position : absolute; width : 260px; height : 80px; display: block;
 	 background-color: transparent; background-image: url(../img/spring.png);
 	 /*background-image: url({% static 'img/spring.png' %});*/ top : -85px; left : 0px; z-index: 2;}
 	.show_floating_block {display : inline; cursor : pointer; text-decoration: underline;}
-	.floating_block {width : 230px; height : 60px; font-size: 14px; position : absolute;
+	.floating_block {width : 220px; height : 60px; font-size: 14px; position : absolute;
 	 top : 0px; left : 10px; display : block; background-color : transparent; z-index: 0; opacity : 1.0;}
 	.floating_block .angle {position : absolute; display : block; height : 30px; width : 30px; left : 0px;
 	 top : 0px; background-image: url(../img/angle.png); /*background-image: url({% static 'img/angle.png' %});*/
 	 opacity : 1.0;}
     .floating_block .flblock_text { background-color : #9BDCE4; position : absolute; left : 20px;
-     display : block; width : auto; max-width: 100%; height : 100%; padding : 3px; border-radius: 7px;}
+     display : block; width : auto; max-width: 90%; height : 100%; padding : 3px; border-radius: 7px;}
     .floating_block .flblock_text input[type="text"] {margin-left: 10px;}
     .floating_block .flblock_text .close_flblock {position : absolute; right : 0px; top: 0px; width : 20px;
      height : 20px; text-align : center; display : block; background-color: #999999;}
 	#order_button {top : 70px; position : absolute; text-align: center; left : 0px; width : 230px;
 	 height : 30px; background-color: transparent; display : block; z-index: 3;}
-	#show_menu{position : absolute; left : -145px; top : -76px; width : 165px; height : 33px;
-	 display : block; background-color : transparent; cursor : pointer; text-align: left;}
+	#show_menu{position : absolute; left : -100px; top : -76px; display : block;
+	 background-color : transparent; cursor : pointer; text-align: left;}
 	#show_menu #show_menu_bkg {background-color: transparent; background-image: url(../img/pen.png);
-     /*background-image: url({% static 'img/pen.png' %});*/ height : 33px; width : 397px; display : block;}
-    #show_menu #show_menu_bkg #show_menu_text {position : absolute; text-align: center; width : 120px;
-	 font-size: 20px; top: 33px; left : 30px; display: block; background-color: #ffff00;
-	 font-family: sans-serif; font-style: italic;}
-
+     /*background-image: url({% static 'img/pen.png' %});*/ height : 33px; width : 397px; display : block;
+     z-index: 2;}
+    #show_menu #show_menu_text {position : absolute; display: block; font-size: 20px;
+     background-color: transparent; width : 250px; height : 30px;
+	 left : -40px; top: 143px;font-family: sans-serif; font-style: italic; z-index: 0;
+	 /* Safari */
+     -webkit-transform: rotate(-90deg);
+     /* Firefox */
+     -moz-transform: rotate(-90deg);
+     /* IE */
+     -ms-transform: rotate(-90deg);
+     /* Opera */
+     -o-transform: rotate(-90deg);
+     /* Internet Explorer */
+     filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3); background-color: transparent;}
+    #show_menu #show_menu_text #show_menu_rectangle {background-color: #33ff55; width: auto;
+     height : 100%; position: absolute; right : 0px;
+     border-width: 3px 0px 3px 3px; border-style: solid; border-color: #00dd00;
+     padding: 0px 5px; border-radius: 5px 0px 0px 5px;}
 	 /*cart style*/
     #cart {position : fixed; left : 10px; bottom : 10px; background-color : #999999; display : block;
 	 height : 95px; width : 70px; text-align: center; font-size: 14px;}

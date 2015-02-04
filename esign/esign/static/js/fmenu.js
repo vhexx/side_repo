@@ -107,6 +107,20 @@ $(document).ready(function ()
     var showed_fblocks_num = 0;
     var fblocks_dist = 10;
     //выплывание всего меню
+    fshow.ob.hover(function ()
+      {
+        var clr = $(this).css("color");
+        if (clr == "rgb(0, 0, 0)")
+        {
+          clr = "rgb(255, 255, 255)";
+        }
+        else
+        {
+          clr = "rgb(0, 0, 0)";
+        }
+        $(this).css({"color" : clr});
+      }
+    );
     fshow.ob.click(function ()
       {
         if (fmenu.vsbl == 0)
@@ -116,7 +130,7 @@ $(document).ready(function ()
             complete : function ()
             {
               {
-                fshow.ob.find("#show_menu_bkg #show_menu_text").html("скрыть");
+                fshow.ob.find("#show_menu_text #show_menu_rectangle").html("скрыть");
               }
             }
           }
@@ -130,7 +144,7 @@ $(document).ready(function ()
             complete : function ()
             {
               {
-                fshow.ob.find("#show_menu_bkg #show_menu_text").html("заказать прямо сейчас!");
+                fshow.ob.find("#show_menu_text #show_menu_rectangle").html("заказать прямо сейчас!");
               }
             }
           }
@@ -159,7 +173,7 @@ $(document).ready(function ()
           {
             var fbtn_top = getcss_px(fbutton.ob, "top");
             var fbtn_hgt = fbutton.hgt;
-            fhidden_hgt += fbutton.hgt + fblocks_dist;
+            fhidden_hgt += fbutton.hgt + 2*fblocks_dist;
             fbutton.ob.css({"top" : (fbtn_top+fhidden_init_hgt+fblocks_dist)+"px", "height" : "0px"});
             setTimeout(function ()
               {
