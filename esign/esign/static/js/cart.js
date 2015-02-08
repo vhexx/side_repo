@@ -44,6 +44,7 @@ $(document).ready(function ()
 			{
 				var prod_id = $(this).parent().parent().attr("id").split('_')[0];
 				var prod_num = parseInt($(this).parent().find("input:text").val());
+				$(this).parent().find("input:text").val("");
 				if (prod_num)
 				{
 					prod_name = product_names_array[prod_id];

@@ -89,10 +89,11 @@ input[type="text"] {max-width: 30px;}
      position : relative; background-image: url(../img/cart.png)}
     #cart_image #cart_items_count {position : absolute; top : -4px; right : -3px;}
     #show_cart_orders {width : 60px; height : 20px; font-size : 11px;}
-    #orders_list {display : block; min-width : 150px; height : auto; position : absolute; bottom : 0px; left : 75px;
+    #orders_list {display : block; min-width : 300px; height : auto; position : absolute; bottom : 0px; left : 75px;
 	 text-align : left; padding : 5px; background-color : #bbbbbb;
 	 font-size: 16px; font-weight: normal; color : #000000; border-radius: 5px;
 	 border : 2px #ffffff solid;}
+	#orders_list .item {border-width: 1px 0px; border-style: solid; border-color : #333333;}
 /*for each screen size range*/
 @media all and (min-width:  1200px)
 {
