@@ -47,11 +47,15 @@ $(document).ready(function ()
 				if (prod_num)
 				{
 					prod_name = product_names_array[prod_id];
+					var cart_items_cnt = parseInt($("#cart #cart_image #cart_items_count").text());
+					if (cart_items_cnt == 0)
+					{
+						$("#cart #orders_list").html("");
+					}
 					addtocart(prod_id, prod_num, prod_name);
 //------------------------------------------------------------					
 					send = prod_id+":+"+prod_num;
-					var cart_items_cnt = $("#cart #cart_image #cart_items_count").text();
-					cart_items_cnt = parseInt(cart_items_cnt)+prod_num;
+					cart_items_cnt = cart_items_cnt+prod_num;
 					$("#cart #cart_image #cart_items_count").html(cart_items_cnt);
 				}
 				else
@@ -70,12 +74,16 @@ $(document).ready(function ()
 //------------------------------------------------------------				
 				var send = prod_id+":-"+prod_num;
 				$(this).parent().parent().remove();
-				var cart_items_cnt = $("#cart #cart_image #cart_items_count").text();
-				cart_items_cnt = parseInt(cart_items_cnt)-prod_num;
+				var cart_items_cnt = parseInt($("#cart #cart_image #cart_items_count").text());
+				cart_items_cnt = cart_items_cnt-prod_num;
 				$("#cart #cart_image #cart_items_count").html(cart_items_cnt);
+				if (cart_items_cnt == 0)
+				{
+					$("#cart #orders_list").html("пусто");
+				}
 			}
 		);
-//клик на кнопку "поменять" в одном из элементов корзины
+//клик на кнопку "изменить" в одном из элементов корзины
 		$("#orders_list").on("click", ".item .change_cnt", function ()
 			{
 				var new_cnt = $(this).parent().find(".order_cnt").val();
@@ -97,6 +105,7 @@ $(document).ready(function ()
 				}
 				else
 				{
+					$(this).parent().find(".order_cnt").val(prev_cnt);
 //------------------------------------------------------------					
 					send="";
 				}
