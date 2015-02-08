@@ -28,7 +28,15 @@ function addtocart (prod_id, prod_num, prod_name)
 }
 $(document).ready(function ()
 	{
-		var product_names_array = {fiz : "подпись физ. лица", yur : "подпись юр. лица", ip : "подпись ИП"};
+		
+//инициализация массива названий
+		var product_names_array = new Object();
+		$("#products_list .product").each(function ()
+			{
+				var prod_id = $(this).attr("id").split('_')[0];
+				product_names_array[prod_id] = $(this).find(".product_name").text();
+			}
+		);
 //клик в одной из форм раздела "оформить заказ"
         $("#cart #orders_list").hide();
         var cart_orders_vsbl = 0;
