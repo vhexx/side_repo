@@ -83,13 +83,16 @@ input[type="text"] {max-width: 30px;}
 
 	 /*cart style*/
     #cart {position : fixed; left : 10px; bottom : 10px; background-color : transparent; display : block;
-	 height : 95px; width : 70px; text-align: center; font-size: 18px; font-weight: bolder;
-	 color : #ffffff;}
-    #cart_image {display : block; width : 50px; height : 50px; margin-left: 10px;
-     position : relative; background-image: url(../img/cart.png)}
-    #cart_image #cart_items_count {position : absolute; top : -4px; right : -3px;}
-    #show_cart_orders {width : 60px; height : 20px; font-size : 11px;}
-    #orders_list {display : block; min-width : 300px; height : auto; position : absolute; bottom : 0px; left : 75px;
+	 height : auto; width : auto; text-align: center; font-size: 18px; font-weight: bolder;
+	 color : #000000;}
+    #cart #cart_image {display : block; width : 50px; height : 50px; margin : 2px auto;
+     position : relative; background-image: url(../img/cart.png);}
+    #cart #cart_image #cart_items_count {position : absolute; top : -4px; right : -3px;}
+    #cart #show_cart_orders {font-size : 12px; font-weight : bolder; font-size: 14px;
+     text-decoration : underline; cursor: pointer;}
+    #cart #cart_total_price {display: inline;}
+    #cart #go_to_ordering {font-size: 14px;}
+    #cart #orders_list {display : block; width : 300px; height : auto; position : absolute; bottom : 0px; left : 100%;
 	 text-align : left; padding : 5px; background-color : #bbbbbb;
 	 font-size: 16px; font-weight: normal; color : #000000; border-radius: 5px;
 	 border : 2px #ffffff solid;}

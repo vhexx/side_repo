@@ -1,5 +1,5 @@
 //изменение содержимого корзины
-function addtocart (prod_id, prod_num, prod_name)
+function addtocart (prod_id, prod_num, prod_name, prod_price)
 {
 	var items = $("#cart #orders_list .item");
 	var new_num = 0;
@@ -20,7 +20,8 @@ function addtocart (prod_id, prod_num, prod_name)
 	{
 	  	var new_item = $("<div>", {"id" : prod_id+"-"+prod_num, "class" : "item"}).appendTo("#cart #orders_list");
 	  	var new_form = $("<form>", {"class" : "item_form"}).appendTo(new_item);
-	  	$("<div>", {"class" : "order_txt", "text" : prod_name}).appendTo(new_form);
+	  	$("<div>", {"class" : "order_txt", "text" : prod_name+" - "+prod_price+"р."}).appendTo(new_form);
+	  	new_form.append("количество: ");
 	  	$("<input>", {"class" : "order_cnt", "type" : "text", "value" : prod_num}).appendTo(new_form);
 	  	$("<input>", {"class" : "change_cnt", "type" : "button", "value" : "изменить"}).appendTo(new_form);
 	  	$("<input>", {"class" : "remove_order", "type" : "button", "value" : "убрать"}).appendTo(new_form);
@@ -40,29 +41,30 @@ $(document).ready(function ()
 //клик в одной из форм раздела "оформить заказ"
         $("#cart #orders_list").hide();
         var cart_orders_vsbl = 0;
-		$("#products_list .product input:button").click(function ()
+		$("#products_list").on("click", ".product input:button", function ()
 			{
 				var prod_id = $(this).parent().parent().attr("id").split('_')[0];
 				var prod_num = parseInt($(this).parent().find("input:text").val());
 				$(this).parent().find("input:text").val("");
 				if (prod_num)
 				{
-					prod_name = product_names_array[prod_id];
+					var prod_name = product_names_array[prod_id];
 					var cart_items_cnt = parseInt($("#cart #cart_image #cart_items_count").text());
+					cart_items_cnt = cart_items_cnt+prod_num;
+					var prod_price = parseInt($(this).parent().find(".product_price").text());
+					var total_price = parseInt($("#cart #cart_total_price").text());
+					total_price = total_price+(prod_price*prod_num);
+					var msg = prod_id+":+"+prod_num;
+//AJAX при добавлении в корзину
+					$.ajax({type : "POST", url : "", data : msg});
+//-----------------------------
 					if (cart_items_cnt == 0)
 					{
 						$("#cart #orders_list").html("");
 					}
-					addtocart(prod_id, prod_num, prod_name);
-//------------------------------------------------------------					
-					send = prod_id+":+"+prod_num;
-					cart_items_cnt = cart_items_cnt+prod_num;
+					addtocart(prod_id, prod_num, prod_name, prod_price);					
 					$("#cart #cart_image #cart_items_count").html(cart_items_cnt);
-				}
-				else
-				{
-//------------------------------------------------------------					
-					send = "";
+					$("#cart #cart_total_price").html(total_price);
 				}
 			}
 		);
@@ -72,12 +74,18 @@ $(document).ready(function ()
 				var prod_to_remove = $(this).parent().parent().attr("id").split("-");
 				var prod_id = prod_to_remove[0];
 				var prod_num = prod_to_remove[1];
-//------------------------------------------------------------				
-				var send = prod_id+":-"+prod_num;
-				$(this).parent().parent().remove();
+				var prod_price = $(this).parent().find(".order_txt").text().split(" - ")[1];
+				prod_price = parseInt(prod_price.substr(0, prod_price.length-2));
+				var total_price = parseInt($("#cart #cart_total_price").text())-(prod_price*prod_num);		
+				var msg = prod_id+":-"+prod_num;
 				var cart_items_cnt = parseInt($("#cart #cart_image #cart_items_count").text());
 				cart_items_cnt = cart_items_cnt-prod_num;
+//AJAX при удалении из корзины
+				$.ajax({type : "POST", url : "", data : msg});
+//----------------------------
+				$(this).parent().parent().remove();
 				$("#cart #cart_image #cart_items_count").html(cart_items_cnt);
+				$("#cart #cart_total_price").html(total_price);
 				if (cart_items_cnt == 0)
 				{
 					$("#cart #orders_list").html("пусто");
@@ -89,26 +97,31 @@ $(document).ready(function ()
 			{
 				var new_cnt = $(this).parent().find(".order_cnt").val();
 				var prev_cnt = parseInt($(this).parent().parent().attr("id").split("-")[1]);
-				var send;
-				if ((parseInt(new_cnt)) && (new_cnt > 0))
+				if ((parseInt(new_cnt)) && (parseInt(new_cnt) > 0))
 				{
 					if (new_cnt.charAt(0) == '+')
 					{
 						new_cnt = new_cnt.substr(1, (new_cnt.length-1));
 					}
+					new_cnt = parseInt(new_cnt);
 					var item_id = $(this).parent().parent().attr("id").split("-")[0];
+					var cart_items_cnt = parseInt($("#cart #cart_image #cart_items_count").text());
+					var msg = item_id+":"+new_cnt;
+					var prod_price = $(this).parent().find(".order_txt").text().split(" - ")[1];
+				    prod_price = parseInt(prod_price.substr(0, prod_price.length-2));
+				    var total_price = parseInt($("#cart #cart_total_price").text());
+//AJAX при изменении количества элементов в корзине
+					$.ajax({type : "POST", url : "", data : msg});
+//-------------------------------------------------
 					$(this).parent().parent().attr({"id" : item_id+"-"+new_cnt});
-//------------------------------------------------------------
-					send = item_id+":"+new_cnt;
-					var cart_items_cnt = $("#cart #cart_image #cart_items_count").text();
-					cart_items_cnt = parseInt(cart_items_cnt)+parseInt(new_cnt)-prev_cnt;
+					cart_items_cnt = cart_items_cnt+new_cnt-prev_cnt;
+					total_price = total_price+((new_cnt-prev_cnt)*prod_price);
 					$("#cart #cart_image #cart_items_count").html(cart_items_cnt);
+					$("#cart #cart_total_price").html(total_price);
 				}
 				else
 				{
 					$(this).parent().find(".order_cnt").val(prev_cnt);
-//------------------------------------------------------------					
-					send="";
 				}
 			}
 		);
@@ -117,12 +130,12 @@ $(document).ready(function ()
 				$(this).parent().find("#orders_list").toggle();
 				if (cart_orders_vsbl == 0)
 				{
-					$(this).attr({"value" : "скрыть"});
+					$(this).html("скрыть");
 					cart_orders_vsbl = 1;
 				}
 				else
 				{
-					$(this).attr({"value" : "показать"});
+					$(this).html("показать");
 					cart_orders_vsbl = 0;
 				}
 			}
