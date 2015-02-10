@@ -1,18 +1,31 @@
 #section_header {font-size : 350%; text-align: center; padding-bottom: 10px;}
 .video {display : block; text-align: center; height : 30%;}
-/*.text {font-size: 140%; max-width : 90%; margin-left: 5%;}*/
-.text {font-size: 1.4em;}
-#products_list {width : 100%; display : block; margin-top : 20px; text-align : center;}
-.product {font-size : 140%; background-color: #9BDCE4; border-radius: 5px; border : 3px #888888 solid;
- display : inline-block; width : 20%; padding : 5px 5px 5px 5px; vertical-align : top; margin : 5px;
+.text {font-size: 1.5em;}
+
+#products_list {display: table; font-size: 0px; width : 95%; margin-right: auto; margin-left: auto;
+ font-weight: normal; position: relative; text-align: left;}
+.product {display: table; width : 100%; border-bottom : 1px #bbbbbb solid; position: relative;}
+.product .product_name {display: table-cell; vertical-align: middle; width : 30%; font-size: 20px;
+ font-weight: bolder; text-align: center; color : #0039A2;}
+.product .product_description {display: table-cell; font-size: 16px; width: 48%; padding: 10px;}
+.product_description_bkg {height : auto; width: auto; display: block;
+ border-left: 1px #bbbbbb solid; padding-left: 5px;}
+.product .product_description .product_price {display: inline;}
+.product .product_add {display: table-cell; font-size: 16px; vertical-align: middle;
+ text-align: center; padding: 5px; width : auto;}
+
+#commit_orders_list {font-size: 0px; display: table; width : 80%;
+ margin-left : auto; margin-right: auto; text-align: center;
+ border : 1px #777777 solid; position: relative; font-weight: normal;
+ border-radius: 10px;
+ -webkit-border-radius: 10px; 
+ -moz-border-radius: 10px; 
+ -khtml-border-radius: 10px;}
+#commit_orders_list input[type="submit"] {font-size: 20px; margin: 5px;}
+.order_str {text-align: left; position: relative; border-bottom: 1px #777777 solid;
+ display: table; width: 100%;}
+.order_str .order_name {display: table-cell; width: 40%; text-align: left; font-size: 20px;
+ border-right: 1px #777777 solid; padding : 5px;}
+.order_str .inputs {display: table-cell; vertical-align: middle; text-align: center; width: auto;
  text-align: center;}
-.product .product_name {font-size: 1.2em; font-weight: bold;}
-.product .product_description {text-align: left;}
-.product .product_price {display: inline;}
-#commit_orders_list {background-color: #dddddd; font-size: 180%; display: block; width : 60%;
- margin-left : auto; margin-right: auto; padding: 10px; border-radius: 5px; text-align: center;
- border : 3px #bbbbbb solid;}
-.order_str {text-align: left; position: relative; margin-bottom: 5px;}
-.order_str .order_name {display: inline-block; width: 60%; text-align: left;}
-.order_str .inputs {position: absolute; right : 0px; bottom: 0px; display: inline;
- text-align: right;}
+.order_str .inputs input {font-size: 16px;}

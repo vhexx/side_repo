@@ -1,34 +1,34 @@
-html, body {height : auto; width : 100%;}
-body {margin : 0%; background-color: #777777;}
+html, body {width : 100%; height: auto; margin: 0; padding: 0;}
+html {background-color: #bbbbbb;}
+body {background: linear-gradient(to top, #bbbbbb, #ffffff);
+     background-image: -webkit-linear-gradient(top, #ffffff, #bbbbbb);
+     background-image: -moz-linear-gradient(top, #ffffff, #bbbbbb);}
 input[type="text"] {max-width: 30px;}
 /*for all screen sizes*/
 
     /*page style*/
-    #page_container {width : 100%; height : 100%; display : block; background: linear-gradient(to top, #777777, #63C2FF);
-     background-image: -webkit-linear-gradient(top, #63C2FF, #777777);
-     background-image: -moz-linear-gradient(top, #63C2FF, #777777);}
-    #header {width : 120%; background-color: transparent; display : block; height : 250px; position: relative;
-     box-shadow: inset 0px 0px 15px #ffffff; left : -10%;}
+    #page_container {width : 100%; height : 100%; display : block; position: relative;}
+    #header {width : 100%; display : block; height : 250px; position: relative;}
     #header_content {display : block; height : 100%; position : absolute;}
     #name {position: absolute; left : 10%; top : 60%; font-size: 30px; display: block; width : 500px;}
     #contacts {position: absolute; left : 60%; top : 70%; width : 250px; display: block;}
-	#content_area {position : relative;
+	#content_area {position : relative; height : auto; padding: 20px;
 	 display : block; min-height : 500px; background-color : #ffffff; border-radius: 10px;
 	 -webkit-border-radius: 10px; 
      -moz-border-radius: 10px; 
-     -khtml-border-radius: 10px;}
-	#content {font-size : 10px; display: block; position: absolute; left: 20px; right: 20px;
-	 top : 20px; bottom: 20px; width: auto; height : auto; box-shadow: inset 2px 2px 10px #888888;
-	 border-radius: inherit; padding: 10px; text-align: left;}
+     -khtml-border-radius: 10px;
+     border : 1px #777777 solid;}
+	#content {font-size : 10px; width: auto; height : auto; box-shadow: inset 2px 2px 10px #888888;
+	 border-radius: inherit; padding: 10px; text-align: left; min-height: 480px; position: relative;}
 	#navigation {font-size: 0px; position : absolute; right : 10px; display : table;
 	 background-color: transparent; text-align: right;}
 	.sect {height : 1.5em; padding : 0.5em 0.5em 0em 0.5em; display : inline-block;
 	 vertical-align: center; text-align: center; background-color : #A8EFE1; font-family: sans-serif;
-	 font-weight: bold; color : #16454C; cursor : pointer; margin-top: -3px;
-	 border-width : 3px 3px 0px 3px; border-style: solid; border-color : #E0FFF6 #82C2C1 #679C9B #C3FFED;
+	 font-weight: bold; color : #16454C; cursor : pointer; margin-right: 5px; margin-top: -2px;
+	 border-width : 1px 1px 0px 1px; border-style: solid; border-color: #16454C;
 	 border-radius: 7px 7px 0px 0px;
-	 -webkit-border-radius: 7px 7px 0px 0px; 
-     -moz-border-radius: 7px 7px 0px 0px; 
+	 -webkit-border-radius: 7px 7px 0px 0px;
+     -moz-border-radius: 7px 7px 0px 0px;
      -khtml-border-radius: 7px 7px 0px 0px;}
 	#footer {position: relative; display : block; min-height: 150px; width : 100%; background-color: transparent;}
 	#footer_content {position: relative; display: block;}
@@ -101,7 +101,7 @@ input[type="text"] {max-width: 30px;}
 @media all and (min-width:  1200px)
 {
 	#header_content, #footer_content {width : 1200px; margin-left: -600px; left : 50%;}
-	#content_area {width : 1000px; left : 50%; margin-left: -580px;}
+	#content_area {width : 980px; left : 50%; margin-left: -580px;}
 	.sect {font-size: 16px;}
 	#navigation {top: -32px;}
 }
@@ -124,3 +124,8 @@ input[type="text"] {max-width: 30px;}
 	#content_area, #footer_content {left : 0%; margin-left: 0px;}
 	#header_content {left : 10%; margin-left: -70px;}
 }
+
+/*@media all and (max-width: 1000px)
+{
+	#header {width : 1000px;}
+}*/
