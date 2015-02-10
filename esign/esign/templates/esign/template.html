@@ -18,9 +18,9 @@
   <!--[if lt IE 8]>
     <style>
       .sect{display : inline; zoom : 1;}
-      .product{display : inline; zoom : 1;}
       #show_menu #show_menu_text {left : 70px; top : 33px;}
       #page_container {filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0, startColorstr=#63C2FF, endColorstr=#777777);}
+      .order_str, .inputs, .product_name, .product_description, .product_add {zoom : 1; display : inline;}
     </style>
   <![endif]-->
 
@@ -44,7 +44,7 @@
   <!--[if lt IE 7]>
     <style>
       #fmenu, #hidden_menu, #show_menu, #order_button {display : none}
-      #cart {position : absolute; top : 50px; right : 10px; left : auto; bottom : auto;}
+      #cart {position : absolute; top : 50px; left : 85%;}
       #content {position : static;}
     </style>
   <![endif]-->
@@ -61,16 +61,15 @@
   </div>
   <div id="content_area">
     <div id="navigation">
-      <div class="sect" id="sect1" href="main.html">Главная</div>
+      <div class="sect" id="sect1" onclick="location.href='main.html';">Главная</div>
       <div class="sect" id="sect2">Что такое ЭЦП</div>
-      <div class="sect" id="sect3" href="ordering.html">Оформить заказ</div>
+      <div class="sect" id="sect3" onclick="location.href='buying.html';">Купить ЭЦП</div>
       <div class="sect" id="sect4">О нас</div>
       <div class="sect" id="sect5">Доставка и оплата</div>
       <div class="sect" id="sect6">Сертификаты</div>
     </div>
     <div id="content">
-        {% block 'content' %}hdddddd ddddddddd ddddddddddd dddddddddddddddddddddddd dddddddddd dddddd ddddddd ddddddddd ddddddddddd dddd ddd ddddd ddddddddddd ddddddddddddddddddd dddddddd dddddd ddddddd ddddddd ddddddd
-        dddd dddddd dddddd ddddddddd dddddddddd dddddd ddddddddddd
+        {% block 'content' %}
         {% endblock %}
     </div>
   </div>
@@ -129,12 +128,12 @@
   </div>
 <!--CART-->
   <div id="cart">
-    Корзина<br>
+    Корзина
+    <div id="show_cart_orders">показать</div>
     <div id="cart_image"><div id="cart_items_count">0</div></div>
-    <input type="button" value="показать" id="show_cart_orders">
-    <div id="orders_list">
-      здесь будет список заказов
-    </div>
+    <div id="cart_total_price">0</div> р.<br>
+    <input type="button" value="оформить заказ" id="go_to_ordering">
+    <div id="orders_list">пусто</div>
   </div>
 
  </div>
