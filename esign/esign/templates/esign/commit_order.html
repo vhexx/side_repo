@@ -8,8 +8,8 @@
 <script>
  $("#commit_orders_list").on("click", ".order_str input:button", function ()
  	{
- 		$(this).parent().parent().find("input:text").val("0");
- 		$(this).parent().parent().hide();
+ 		$(this).closest(".inputs").find("input:text").val("0");
+        $(this).closest(".order_str").hide();
  	}
  );
 </script>
