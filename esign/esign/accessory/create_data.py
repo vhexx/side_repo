@@ -14,6 +14,9 @@ t_signature.save()
 signature_type = Attributes(name='type', datatype='char', type=t_signature)
 signature_type.save()
 
+signature_id = Attributes(name='id', datatype='float', type=t_signature)
+signature_id.save()
+
 signature_price = Attributes(name='price', datatype='float', type=t_signature)
 signature_price.save()
 
@@ -54,8 +57,17 @@ order_status.save()
 order_comment = Attributes(name='comment', datatype='char', type=t_order)
 order_comment.save()
 
+order_signature_count_1 = Attributes(name='signature_count_1', datatype='float', type=t_order)
+order_signature_count_1.save()
+
+order_signature_count_2 = Attributes(name='signature_count_2', datatype='float', type=t_order)
+order_signature_count_2.save()
+
+order_signature_count_3 = Attributes(name='signature_count_3', datatype='float', type=t_order)
+order_signature_count_3.save()
 
 
+#Add signatures
 
 
 
