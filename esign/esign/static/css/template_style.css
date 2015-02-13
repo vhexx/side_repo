@@ -8,6 +8,8 @@ input[type="text"] {max-width: 30px;}
      background: linear-gradient(to top, #bbbbbb, #ffffff);
      background-image: -webkit-linear-gradient(top, #ffffff, #bbbbbb);
      background-image: -moz-linear-gradient(top, #ffffff, #bbbbbb);}
+    #bkg_pattern {display: block; width: 100%; height : 100%; opacity: 0.2;
+     background-image: url(../img/background.png);}
     #header {width : 100%; display : block; height : 250px; position: relative;}
     #header_content {display : block; height : 100%; position : absolute;}
     #name {position: absolute; left : 10%; top : 60%; font-size: 30px; display: block; width : 500px;}
@@ -25,13 +27,12 @@ input[type="text"] {max-width: 30px;}
 
 	#navigation {font-size: 0px; position : absolute; right : 10px; display : table;
 	 background-color: transparent; text-align: right;}
-	.sect {display : inline-block; text-align: center; background-color : #A8EFE1;
-	 margin-right: 5px; margin-top: -2px; border-width : 1px 1px 0px 1px;
-	 border-style: solid; border-color: #16454C;
-	 border-radius: 7px 7px 0px 0px;
-	 -webkit-border-radius: 7px 7px 0px 0px;
-     -moz-border-radius: 7px 7px 0px 0px;
-     -khtml-border-radius: 7px 7px 0px 0px; position: relative;}
+	.sect {display : inline-block; text-align: center;
+	 border-width : 1px; border-color : #A8EFE1 #D1FFF5 #A8EFE1 #409F9A; border-style: solid;
+	 background: linear-gradient(to top, #20E8C1, #CDFFF5);
+     background-image: -webkit-linear-gradient(top, #CDFFF5, #20E8C1);
+     background-image: -moz-linear-gradient(top, #CDFFF5, #20E8C1);
+	 margin-top: -3px; position: relative;}
     .sect a {display: inline-block; height : 1em; padding : 0.5em; color : #16454C;
      text-decoration: none; font-family: courier; font-weight: bold;}
 	#footer {position: relative; display : block; min-height: 150px; width : 100%;
