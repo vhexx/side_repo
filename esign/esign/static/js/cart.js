@@ -62,7 +62,7 @@ $(document).ready(function ()
 						$("#cart #orders_list").html("");
 					}
 					cart_items_cnt = cart_items_cnt+prod_num;
-					addtocart(prod_id, prod_num, prod_name, prod_price);					
+					addtocart(prod_id, prod_num, prod_name, prod_price);
 					$("#cart #cart_image #cart_items_count").html(cart_items_cnt);
 					$("#cart #cart_total_price").html(total_price);
 				}
