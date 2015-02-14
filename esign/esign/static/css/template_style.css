@@ -3,24 +3,28 @@ input[type="text"] {max-width: 30px;}
 /*for all screen sizes*/
 
     /*page style*/
-    #page_container {width : 100%; height : 100%; display : block; position: relative;}
+    #page_container {width : 100%; height : 100%; display : block; position: relative; font-size: 10px;}
     #page_bkg {position : fixed; width : 100%; height : 100%; top : 0px; left : 0px;
      background: linear-gradient(to top, #bbbbbb, #ffffff);
      background-image: -webkit-linear-gradient(top, #ffffff, #bbbbbb);
-     background-image: -moz-linear-gradient(top, #ffffff, #bbbbbb);}
+     background-image: -moz-linear-gradient(top, #ffffff, #bbbbbb);
+     filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0, startColorstr=#ffffff, endColorstr=#bbbbbb);
+	 -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#ffffff, endColorstr=#bbbbbb)";
+     }
     #bkg_pattern {display: block; width: 100%; height : 100%; opacity: 0.2;
      background-image: url(../img/background.png);}
     #header {width : 100%; display : block; height : 250px; position: relative;}
     #header_content {display : block; height : 100%; position : absolute;}
-    #name {position: absolute; left : 10%; top : 60%; font-size: 30px; display: block; width : 500px;}
-    #contacts {position: absolute; left : 60%; top : 70%; width : 250px; display: block;}
-	#content_area {position : relative; height : auto; padding: 20px; font-size: 10px;
+    #name {position: absolute; left : 10%; top : 60%; font-size: 3.0em; display: block; width : 500px;}
+    #contacts {position: absolute; left : 60%; top : 70%; width : 250px; display: block;
+     font-size: 1.5em;}
+	#content_area {position : relative; height : auto; padding: 20px;
 	 display : block; min-height : 500px; background-color : #ffffff; border-radius: 10px;
 	 -webkit-border-radius: 10px; 
      -moz-border-radius: 10px; 
      -khtml-border-radius: 10px;
      border : 1px #777777 solid;}
-	#content {font-size : 10px; width: auto; height : auto; box-shadow: inset 2px 2px 10px #888888;
+	#content {width: auto; height : auto; box-shadow: inset 2px 2px 10px #888888;
 	 border-radius: inherit; padding: 10px; text-align: left; min-height: 480px; position: relative;}
 
     #fquest {position: fixed; top : 120px; left: 0px;}
@@ -32,12 +36,14 @@ input[type="text"] {max-width: 30px;}
 	 background: linear-gradient(to top, #20E8C1, #CDFFF5);
      background-image: -webkit-linear-gradient(top, #CDFFF5, #20E8C1);
      background-image: -moz-linear-gradient(top, #CDFFF5, #20E8C1);
+     filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0, startColorstr=#CDFFF5, endColorstr=#20E8C1);
+	 -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#CDFFF5, endColorstr=#20E8C1)";
 	 margin-top: -3px; position: relative;}
     .sect a {display: inline-block; height : 1em; padding : 0.5em; color : #16454C;
      text-decoration: none; font-family: courier; font-weight: bold;}
 	#footer {position: relative; display : block; min-height: 150px; width : 100%;
 	 background-color: transparent;}
-	#footer_content {position: relative; display: block;}
+	#footer_content {position: relative; display: block; font-size: 1.6em;}
 	#bottom_logo, #links {display : inline;}
     #links a {margin-left : 600px; display : block; color : #ffffff;}
 
