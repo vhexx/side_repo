@@ -1,15 +1,17 @@
 import traceback
+import datetime
 import django
 from django.db.transaction import set_autocommit, commit, rollback
 
 from esign.models import Types, Attributes, Entities, Parameters
+
 set_autocommit(False)
 
-#Common type
+# Common type
 t_all = Types(name='all', parent=None)
 t_all.save()
 
-#Signature
+# Signature
 t_signature = Types(name='signature', parent=t_all)
 t_signature.save()
 
@@ -28,7 +30,7 @@ signature_image.save()
 signature_description = Attributes(name='description', datatype='char', type=t_signature)
 signature_description.save()
 
-#Order
+# Order
 t_order = Types(name='order', parent=t_all)
 t_order.save()
 
@@ -44,13 +46,10 @@ order_customer_email.save()
 order_customer_address = Attributes(name='customer_address', datatype='char', type=t_order)
 order_customer_address.save()
 
-order_signature_type = Attributes(name='signature_type', datatype='float', type=t_order)
-order_signature_type.save()
-
 order_date = Attributes(name='date', datatype='float', type=t_order)
 order_date.save()
 
-order_time_to_call = Attributes(name='time_to_call', datatype='float', type=t_order)
+order_time_to_call = Attributes(name='time_to_call', datatype='char', type=t_order)
 order_time_to_call.save()
 
 order_status = Attributes(name='status', datatype='float', type=t_order)
@@ -69,14 +68,11 @@ order_signature_count_3 = Attributes(name='signature_count_3', datatype='float',
 order_signature_count_3.save()
 
 
-
-
-
 def prepare_metadata():
     #Common type
-    global t_all, t_signature, signature_type,signature_id,signature_price,signature_image,signature_description
-    global t_order,order_customer_name,order_customer_phone,order_customer_email,order_customer_address,order_signature_type
-    global order_date,order_time_to_call,order_status,order_comment,order_signature_count_1,order_signature_count_2,order_signature_count_3
+    global t_all, t_signature, signature_type, signature_id, signature_price, signature_image, signature_description
+    global t_order, order_customer_name, order_customer_phone, order_customer_email, order_customer_address, order_signature_type
+    global order_date, order_time_to_call, order_status, order_comment, order_signature_count_1, order_signature_count_2, order_signature_count_3
     t_all = Types.objects.get(id=12)
 
     #Signature
@@ -119,14 +115,43 @@ def add_signature_type(name, id, price, image, description):
     e_singature_description = Parameters(entity=e_singature, attribute=signature_description, string_value=description)
     e_singature_description.save()
 
+
+def add_order(name, phone, email='', address='', time_to_call='', comment='', e1=0, e2=0, e3=0):
+    e_order = Entities(type=t_order)
+    e_order.save()
+    e_order_customer_name = Parameters(entity=e_order, attribute=order_customer_name, string_value=name)
+    e_order_customer_name.save()
+    e_order_customer_phone = Parameters(entity=e_order, attribute=order_customer_phone, string_value=phone)
+    e_order_customer_phone.save()
+    e_order_customer_email = Parameters(entity=e_order, attribute=order_customer_email, string_value=email or '')
+    e_order_customer_email.save()
+    e_order_customer_address = Parameters(entity=e_order, attribute=order_customer_address, string_value=address or '')
+    e_order_customer_address.save()
+    e_order_date = Parameters(entity=e_order, attribute=order_date, float_value=datetime.datetime.now().timestamp())
+    e_order_date.save()
+    e_order_time_to_call = Parameters(entity=e_order, attribute=order_time_to_call, string_value=time_to_call or '')
+    e_order_time_to_call.save()
+    e_order_status = Parameters(entity=e_order, attribute=order_status, float_value=0)
+    e_order_status.save()
+    e_order_comment = Parameters(entity=e_order, attribute=order_comment, string_value=comment or '')
+    e_order_comment.save()
+    e_order_signature_count_1 = Parameters(entity=e_order, attribute=order_signature_count_1, float_value=e1 or 0)
+    e_order_signature_count_1.save()
+    e_order_signature_count_2 = Parameters(entity=e_order, attribute=order_signature_count_2, float_value=e2 or 0)
+    e_order_signature_count_2.save()
+    e_order_signature_count_3 = Parameters(entity=e_order, attribute=order_signature_count_3, float_value=e3 or 0)
+    e_order_signature_count_3.save()
+
+
 #Add signatures
 
 add_signature_type(name="Подпись для физических лиц", id=1, price=1000, image="?", description="описание1")
 add_signature_type(name="Подпись для юридических лиц", id=2, price=1200, image="?", description="описание2")
-add_signature_type(name="Подпись для индивидуальных предпренимателей", id=3, price=1500, image="?", description="описание3")
+add_signature_type(name="Подпись для индивидуальных предпренимателей", id=3, price=1500, image="?",
+                   description="описание3")
 
 
-
+#Add orders
 
 
 
