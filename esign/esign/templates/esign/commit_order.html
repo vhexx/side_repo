@@ -3,16 +3,22 @@
 {% block 'content' %}
 <div id="section_header">Подтвердите ваш заказ</div>
 <form>
- <div id="commit_orders_list">
+ <table id="commit_orders_list">
  	здесь будет сделнный заказ
-    <input type="submit" value="подтвердить">
- </div>
+    <tr class="str"><td class="str_cell" colspan="2"><input type="submit" value="подтвердить"></tr>
+ </table>
 </form>
 <script>
- $("#commit_orders_list").on("click", ".order_str input:button", function ()
+ $(document).ready(function ()
+ 	{
+ 		$("#cart").hide();
+ 		$("#floating_menu").hide();
+ 	}
+ );
+ $("#commit_orders_list").on("click", ".str input:button", function ()
  	{
  		$(this).closest(".inputs").find("input:text").val("0");
-        $(this).closest(".order_str").hide();
+        $(this).closest(".str").hide();
  	}
  );
 </script>

@@ -1,31 +1,54 @@
 #section_header {font-size : 350%; text-align: center; padding-bottom: 10px;}
 .video {display : block; text-align: center; height : 30%;}
-.text {font-size: 1.5em;}
+.text {font-size: 1.6em;}
+input[type="submit"] {font-size: 20px; margin: 5px; border-radius: 0px; border-width: 3px;
+ border-style : solid; border-color : #cccccc; background-color: #555555; background-image: none;
+ color : #cccccc;}
 
-#products_list {display: table; font-size: 0px; width : 95%; margin-right: auto; margin-left: auto;
- font-weight: normal; position: relative; text-align: left;}
-.product {display: table; width : 100%; border-bottom : 1px #bbbbbb solid; position: relative;}
-.product .product_name {display: table-cell; vertical-align: middle; width : 30%; font-size: 20px;
+#products_list {font-size: 0px; width : 95%; margin-right: auto; margin-left: auto;
+ font-weight: normal; position: relative; text-align: left; border-spacing: 0px;}
+.product {width : 100%; position: relative; display: table; table-layout: fixed;}
+.product .product_name {vertical-align: middle; width : 30%; font-size: 20px;
  font-weight: bolder; text-align: center; color : #0039A2;}
-.product .product_description {display: table-cell; font-size: 16px; width: 48%; padding: 10px;}
+.product .product_description {font-size: 16px; width: 48%; padding: 10px;}
 .product_description_bkg {height : auto; width: auto; display: block;
  border-left: 1px #bbbbbb solid; padding-left: 5px;}
 .product .product_description .product_price {display: inline;}
-.product .product_add {display: table-cell; font-size: 16px; vertical-align: middle;
+.product .product_add {font-size: 16px; vertical-align: middle;
  text-align: center; padding: 5px; width : auto;}
+.product_name, .product_description, .product_add {border-bottom : 1px #bbbbbb solid;}
 
-#commit_orders_list {font-size: 0px; display: table; width : 80%;
+.str {text-align: left; position: relative; width: 100%;
+ width: 100%;}
+.str .name {display: table-cell; width: 40%; text-align: left; font-size: 20px;
+ padding : 5px;}
+.str .name .oname, .str .name .oprice {display: inline;}
+.str .inputs {display: table-cell; vertical-align: middle; width: auto;
+ text-align: center;}
+.str .inputs {font-size: 16px;}
+.str_cell {width: 100%; text-align: center;}
+.str_cell div {font-size: 16px;}
+
+ #commit_orders_list {font-size: 0px; width : 80%; table-layout: fixed; border-spacing: 0px;
  margin-left : auto; margin-right: auto; text-align: center;
  border : 1px #777777 solid; position: relative; font-weight: normal;
  border-radius: 10px;
  -webkit-border-radius: 10px; 
  -moz-border-radius: 10px; 
  -khtml-border-radius: 10px;}
-#commit_orders_list input[type="submit"] {font-size: 20px; margin: 5px;}
-.order_str {text-align: left; position: relative; border-bottom: 1px #777777 solid;
- display: table; width: 100%;}
-.order_str .order_name {display: table-cell; width: 40%; text-align: left; font-size: 20px;
- border-right: 1px #777777 solid; padding : 5px;}
-.order_str .inputs {display: table-cell; vertical-align: middle; text-align: center; width: auto;
- text-align: center;}
-.order_str .inputs input {font-size: 16px;}
+ #commit_orders_list .str .name {border-right: 1px #777777 solid; border-bottom: 1px #777777 solid;}
+ #commit_orders_list .str .inputs {border-bottom: 1px #777777 solid; text-align: center;}
+
+.final_order {font-size: 1.8em; width : auto; text-align: center; font-weight: bolder; position: relative;}
+.final_order_text, .final_order_price {font-weight: normal; display: inline-block;}
+.final_order#fast {font-size: 1.2em;}
+.questionnaire {font-size : 1.8em; text-align: left; margin-left : 20%; margin-top: 2em; width: 60%;
+ background-color: #eeeeee; display: table; position: relative; padding: 0.5em; border-spacing: 0px;
+ border-radius: 10px;
+ -webkit-border-radius: 10px; 
+ -moz-border-radius: 10px; 
+ -khtml-border-radius: 10px;
+ border : 1px #777777 solid;}
+.questionnaire .str .inputs {text-align: left;}
+.questionnaire .str .inputs input[type="text"] {width: 200px; max-width: 200px;}
+.questionnaire .str .inputs input[name="addinfo"], .questionnaire .str .inputs input[name="address"] {width: 300px; max-width: 300px;}

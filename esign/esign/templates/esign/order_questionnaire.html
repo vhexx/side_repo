@@ -1,0 +1,56 @@
+<script>
+$(document).ready(function ()
+ 	{
+ 		$("#cart").hide();
+ 		$("#floating_menu").hide();
+ 	}
+ );
+</script>
+<div class="final_order">    
+    Ваш заказ : <div class="final_order_text">заказ</div><br>
+	Итого : <div class="final_order_price">цена заказа</div><br>
+</div>
+<div class="text">Пожалуйста, введите контактные данные в анкету и отсавьте заявку. Оператор свяжется с Вами в течение нескольких минут</div>
+<form name="final_form">
+    <table class="questionnaire">
+    	<tr class="str">
+    		<td class="name">Имя* :</td>
+    		<td class="inputs"><input type="text" name="name"></td>
+    	</tr>
+    	<tr class="str">
+		    <td class="name">Фамилия :</td>
+		    <td class="inputs"><input type="text" name="surname"></td>
+		</tr>
+        <tr class="str">
+		    <td class="name">Адрес доставки :</td>
+		    <td class="inputs"><input type="text" name="address"></td>
+		</tr>
+		<tr class="str">
+		    <td class="name">Контактный телефон* :</td>
+		    <td class="inputs"><input type="text" name="phone_number"></td>
+		</tr>
+		<tr class="str">
+		    <td class="name">e-mail :</td>
+		    <td class="inputs"><input type="text" name="email"></td>
+		</tr>
+		<tr class="str">
+		    <td class="name">Способ оплаты :</td>
+		    <td class="inputs">
+		    	<select name="payment_way">
+		    		<option value="cash" selected>Наличными</option>
+		            <option value="card">Банковской картой</option>
+	            </select>
+	        </td>
+	    </tr>
+	    <tr class="str">
+	        <td class="name">Дополнительная информация :</td>
+	        <td class="inputs"><input type="text" name="addinfo"></td>
+    	</tr>
+	    <tr class="str">
+	    	<td class="str_cell" colspan="2">
+	    		<input class="send_app" type="submit" value="Оставить заявку">
+	    	</td>
+	    </tr>
+	</table>
+</form>
+<div class="text">* - поля, обязательные для заполнения</div>
