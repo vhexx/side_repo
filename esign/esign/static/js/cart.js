@@ -45,7 +45,6 @@ $(document).ready(function ()
 			{
 				var prod_id = $(this).closest(".product").attr("id").split('_')[0];
 				var prod_num = parseInt($(this).closest(".product").find("input:text").val());
-				$(this).parent().find("input:text").val("");
 				if (prod_num)
 				{
 					var prod_name = product_names_array[prod_id];
@@ -54,8 +53,9 @@ $(document).ready(function ()
 					var total_price = parseInt($("#cart #cart_total_price").text());
 					total_price = total_price+(prod_price*prod_num);
 					var msg = prod_id+":+"+prod_num;
+					var serialized_data = $(this).closest(".product").find("form").serializeArray();
 //AJAX при добавлении в корзину
-					$.ajax({type : "POST", url : "", data : msg});
+					$.ajax({type : "POST", url : "/add_to_basket/", data : serialized_data});
 //-----------------------------
 					if (cart_items_cnt == 0)
 					{
@@ -66,6 +66,7 @@ $(document).ready(function ()
 					$("#cart #cart_image #cart_items_count").html(cart_items_cnt);
 					$("#cart #cart_total_price").html(total_price);
 				}
+				$(this).parent().find("input:text").val("");
 			}
 		);
 //клик на кнопку "убрать" в одном из элементов корзины
