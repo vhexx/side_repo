@@ -1,7 +1,7 @@
-<tr class="str" id="idтовара">
-	<td class="name">наименование - 1000р.</td>
+<tr class="str order_info">
+	<td class="name"><div class="oname">{{sign_name}}</div> - <div class="oprice">{{sign_price}}</div>р.</td>
 	<td class="inputs">
-		<input type="text" name="id_num"><!--здесь количество-->
+		<input type="text" name="{{sign_id}}_num" data-parsley-type="digits" data-parsley-trigger="keyup" data-parsley-type-message="Введите количество цифрами">
 	    <input type="button" value="убрать из списка">
     </td>
 </tr>

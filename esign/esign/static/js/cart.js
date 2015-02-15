@@ -19,12 +19,15 @@ function addtocart (prod_id, prod_num, prod_name, prod_price)
 	if (id_check == 0)
 	{
 	  	var new_item = $("<div>", {"id" : prod_id+"-"+prod_num, "class" : "item"}).appendTo("#cart #orders_list");
-	  	var new_form = $("<form>", {"class" : "item_form"}).appendTo(new_item);
+	    /*var new_form = $("<form>", {"class" : "item_form"}).appendTo(new_item);
 	  	$("<div>", {"class" : "order_txt", "text" : prod_name+" - "+prod_price+"р."}).appendTo(new_form);
 	  	new_form.append("количество: ");
 	  	$("<input>", {"class" : "order_cnt", "type" : "text", "value" : prod_num}).appendTo(new_form);
 	  	$("<input>", {"class" : "change_cnt", "type" : "button", "value" : "изменить"}).appendTo(new_form);
-	  	$("<input>", {"class" : "remove_order", "type" : "button", "value" : "убрать"}).appendTo(new_form);
+	  	$("<input>", {"class" : "remove_order", "type" : "button", "value" : "убрать"}).appendTo(new_form);*/
+	  	var new_form_html = '<form class="item_form" data-parsley-validate><div class="order_txt">'+prod_name+' - '+prod_price+'р.</div>количество: <input class="order_cnt" value='+prod_num+' type="text" data-parsley-type="digits" data-parsley-trigger="keyup"><input class="change_cnt" type="button" value="поменять"><input class="remove_order" type="button" value="убрать"></form>';
+	    new_item = new_item.append(new_form_html);
+	    new_item.find(".item_form").parsley();
 	}
 }
 $(document).ready(function ()
@@ -43,11 +46,11 @@ $(document).ready(function ()
         var cart_orders_vsbl = 0;
 		$("#products_list").on("click", ".product input:button", function ()
 			{
-				var prod_id = $(this).closest(".product").attr("id").split('_')[0];
-				var prod_num = parseInt($(this).closest(".product").find("input:text").val());
-				$(this).parent().find("input:text").val("");
-				if (prod_num)
+				var txt_field = $(this).closest(".product").find("input:text");
+                if ( (txt_field.parsley().isValid()) && (txt_field.val() != "") && (txt_field.val() != "0"))
 				{
+					var prod_id = $(this).closest(".product").attr("id").split('_')[0];
+				    var prod_num = parseInt(txt_field.val());
 					var prod_name = product_names_array[prod_id];
 					var cart_items_cnt = parseInt($("#cart #cart_image #cart_items_count").text());
 					var prod_price = parseInt($(this).closest(".product").find(".product_price").text());
@@ -66,6 +69,7 @@ $(document).ready(function ()
 					$("#cart #cart_image #cart_items_count").html(cart_items_cnt);
 					$("#cart #cart_total_price").html(total_price);
 				}
+				txt_field.val("");
 			}
 		);
 //клик на кнопку "убрать" в одном из элементов корзины
@@ -95,19 +99,20 @@ $(document).ready(function ()
 //клик на кнопку "изменить" в одном из элементов корзины
 		$("#orders_list").on("click", ".item .change_cnt", function ()
 			{
-				var new_cnt = $(this).closest(".item").find(".order_cnt").val();
+				var cnt_field = $(this).closest(".item").find(".order_cnt");
 				var prev_cnt = parseInt($(this).closest(".item").attr("id").split("-")[1]);
-				if ((parseInt(new_cnt)) && (parseInt(new_cnt) > 0))
+				if ( (cnt_field.parsley().isValid()) && (cnt_field.val() != "") )
 				{
+					/*var new_cnt = cnt_field.val();
 					if (new_cnt.charAt(0) == '+')
 					{
 						new_cnt = new_cnt.substr(1, (new_cnt.length-1));
-					}
-					new_cnt = parseInt(new_cnt);
+					}*/
+					new_cnt = parseInt(cnt_field.val());
 					var item_id = $(this).closest(".item").attr("id").split("-")[0];
 					var cart_items_cnt = parseInt($("#cart #cart_image #cart_items_count").text());
 					var msg = item_id+":"+new_cnt;
-					var prod_price = $(this).parent().find(".order_txt").text().split(" - ")[1];
+					var prod_price = $(this).closest(".item").find(".order_txt").text().split(" - ")[1];
 				    prod_price = parseInt(prod_price.substr(0, prod_price.length-2));
 				    var total_price = parseInt($("#cart #cart_total_price").text());
 //AJAX при изменении количества элементов в корзине
@@ -121,7 +126,7 @@ $(document).ready(function ()
 				}
 				else
 				{
-					$(this).parent().find(".order_cnt").val(prev_cnt);
+					$(this).closest(".item").find(".order_cnt").val(prev_cnt);
 				}
 			}
 		);

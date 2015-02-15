@@ -105,7 +105,6 @@ $(document).ready(function ()
     var max_zindx = fblocks_init_zindx;
     var fblocks_init_top = flb.eq(0).css("top");
     var showed_fblocks_num = 0;
-    var fblocks_dist = 10;
     //выплывание всего меню
     fshow.ob.hover(function ()
       {
@@ -164,17 +163,17 @@ $(document).ready(function ()
           var opened_top = getcss_px(fblocks[opened_indx].ob, "top");
           var fhidden_hgt = fhidden.hgt;
           fblocks[opened_indx].ob.show();
-          fblocks[opened_indx].ob.css({"z-index" : max_zindx, "top" : (opened_top+fblocks_cur_shift+fblocks_dist)+"px"});
+          fblocks[opened_indx].ob.css({"z-index" : max_zindx, "top" : (opened_top+fblocks_cur_shift)+"px"});
           fmenu_anim_show(fblocks[opened_indx].ob);
           fblocks[opened_indx].z_index = max_zindx;
-          fblocks_cur_shift += (fblocks[opened_indx].hgt+fblocks_dist);
-          fhidden_hgt += fblocks[opened_indx].hgt + fblocks_dist;
+          fblocks_cur_shift += fblocks[opened_indx].hgt;
+          fhidden_hgt += fblocks[opened_indx].hgt;
           if (showed_fblocks_num == 0)
           {
             var fbtn_top = getcss_px(fbutton.ob, "top");
             var fbtn_hgt = fbutton.hgt;
-            fhidden_hgt += fbutton.hgt + 2*fblocks_dist;
-            fbutton.ob.css({"top" : (fbtn_top+fhidden_init_hgt+fblocks_dist)+"px", "height" : "0px"});
+            fhidden_hgt += fbutton.hgt;
+            fbutton.ob.css({"top" : (fblocks_cur_shift)+"px", "height" : "0px"});
             setTimeout(function ()
               {
                 fbutton.ob.show();
@@ -185,7 +184,7 @@ $(document).ready(function ()
           else
           {
             var fbtn_top = getcss_px(fbutton.ob, "top");
-            fbutton.ob.animate({"top" : (fbtn_top+fblocks[opened_indx].hgt+fblocks_dist)+"px"}, {duration : 200, queue : true});
+            fbutton.ob.animate({"top" : (fbtn_top+fblocks[opened_indx].hgt)+"px"}, {duration : 200, queue : true});
           }
           fhidden.hgt = fhidden_hgt;
           fhidden.ob.animate({"height" : fhidden_hgt+"px"}, 200);
@@ -198,20 +197,20 @@ $(document).ready(function ()
       {
         var closed_indx = cutstr($(this).attr("id"), 6);
         var fhidden_hgt = fhidden.hgt;
-        fhidden_hgt -= (fblocks[closed_indx].hgt + fblocks_dist);
+        fhidden_hgt -= fblocks[closed_indx].hgt;
         if (fblocks[closed_indx].vsbl == 1)
         {
           var closed_zindx = fblocks[closed_indx].z_index;
           var indx;
           fblocks[closed_indx].vsbl = 0;
-          fblocks_cur_shift -= (fblocks[closed_indx].hgt+fblocks_dist);
+          fblocks_cur_shift -= fblocks[closed_indx].hgt;
           for (indx in fblocks)
           {
             if ((fblocks[indx].z_index > closed_zindx) && (fblocks[indx].vsbl == 1))
             {
               fblocks[indx].z_index -= 1;
               fblocks[indx].ob.css({"z_index" : fblocks[indx].z_index});
-              var top_after_shift = (getcss_px(fblocks[indx].ob, "top")-fblocks[closed_indx].hgt-fblocks_dist);
+              var top_after_shift = (getcss_px(fblocks[indx].ob, "top")-fblocks[closed_indx].hgt);
               fblocks[indx].ob.animate({"top" : top_after_shift+"px"}, {duration : 200, queue : true});
             }
           }
@@ -223,14 +222,14 @@ $(document).ready(function ()
           fmenu_anim_hide(fblocks[closed_indx].ob, {"z-index" : fblocks_init_zindx, "top" : fblocks_init_top, "left" : closed_left, "height" : closed_hgt, "width" : closed_wdt});
           if (showed_fblocks_num > 1)
           {
-            fbutton.ob.animate({"top" : (getcss_px(fbutton.ob, "top")-closed_hgt-fblocks_dist)+"px"}, 200);
+            fbutton.ob.animate({"top" : (getcss_px(fbutton.ob, "top")-closed_hgt)+"px"}, 200);
           }
           else
           {
             var fbutton_top = getcss_px(fbutton.ob, "top");
             var fbutton_hgt = getcss_px(fbutton.ob, "height");
             fhidden_hgt = fhidden_init_hgt;
-            fmenu_anim_hide(fbutton.ob, {"top" : (fbutton_top-fhidden_init_hgt-fblocks_dist)+"px", "left" : fbutton.ob.css("left"), "height" : (fbutton_hgt)+"px", "width" : fbutton.ob.css("width")});
+            fmenu_anim_hide(fbutton.ob, {"top" : (fbutton_top-fhidden_init_hgt)+"px", "left" : fbutton.ob.css("left"), "height" : (fbutton_hgt)+"px", "width" : fbutton.ob.css("width")});
           }
           fhidden.hgt = fhidden_hgt;
           fhidden.ob.animate({"height" : fhidden_hgt+"px"}, 200);

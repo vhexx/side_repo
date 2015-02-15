@@ -1,7 +1,7 @@
 <div id="{{sign_id}}-{{sign_count}}" class="item">
-	<form class="item_form">
+	<form class="item_form" data-parsley-validate>
 	    <div class="order_txt">{{sign_name}} - {{sign_price}}р.</div>
-	    количество: <input class="order_cnt" type="text">
+	    количество: <input class="order_cnt" type="text" data-parsley-type="digits" data-parsley-trigger="keyup">
 	    <input class="change_cnt" type="button" value="поменять">
 	    <input class="remove_order" type="button" value="убрать">
     </form>
