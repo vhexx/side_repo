@@ -6,23 +6,24 @@
 </div>
 <div id="products_list">
     {% for i in products %}
-        <div id="{{i.1}}" class="product">
-            <form>
-                {% csrf_token %}
-                <div class="product_name">{{i.0}}</div>
-                  <div class="product_description">
-                    <div class="product_description_bkg">
-                      Описание товара<br>
-                      {{i.4}}
-                      Цена : <div class="product_price">{{i.2}}</div>р.<br>
-                    </div>
-                  </div>
-                  <div class="product_add">
-                    Введите количество : <input type="text" name="{{i.1}}"><br>
-                    <input type="button" value="Добавить">
-                  </div>
+
+        <tr id="{{i.1}}" class="product">
+          <td class="product_name">{{sign_name}}</td>
+          <td class="product_description">
+            <div class="product_description_bkg">
+              {{i.4}}<br>
+              Цена : <div class="product_price">{{i.2}}</div>р.
+            </div>
+          </td>
+          <td class="product_add">
+            <form data-parsley-validate>
+              Введите количество :
+              <input type="text" name="{{i.1}}" class="product_count" data-parsley-type="digits" data-parsley-trigger="keyup" data-parsley-type-message="Введите количество цифрами">
+              <input type="button" value="Добавить">
             </form>
-        </div>
+          </td>
+        </tr>
+
     {% endfor %}
 </div>
 <div class="text"><a href="commit_order.html">Перейти к оформлению заказа</a></div>
