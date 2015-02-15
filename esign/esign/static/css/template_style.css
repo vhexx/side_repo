@@ -27,7 +27,7 @@ input[type="text"] {max-width: 30px;}
 	#content {width: auto; height : auto; box-shadow: inset 2px 2px 10px #888888;
 	 border-radius: inherit; padding: 10px; text-align: left; min-height: 480px; position: relative;}
 
-    #fquest {position: fixed; top : 120px; left: 0px;}
+    #fquest {position: fixed; top : 120px; width : 100%;}
 
 	#navigation {font-size: 0px; position : absolute; right : 10px; display : table;
 	 background-color: transparent; text-align: right;}
@@ -57,18 +57,22 @@ input[type="text"] {max-width: 30px;}
 	 background-color: transparent; background-image: url(../img/spring.png);
 	 /*background-image: url({% static 'img/spring.png' %});*/ top : -85px; left : 0px; z-index: 2;}
 	.show_floating_block {display : inline; cursor : pointer; text-decoration: underline;}
-	.floating_block {width : 220px; height : 60px; font-size: 14px; position : absolute;
+	.floating_block {width : 200px; height : auto; font-size: 14px; position : absolute;
 	 top : 0px; left : 10px; display : block; background-color : transparent; z-index: 0; opacity : 1.0;}
-	.floating_block .angle {position : absolute; display : block; height : 30px; width : 30px; left : 0px;
+	.floating_block .angle {position : absolute; display : block; width : 30px; height: 30px; left : 0px;
 	 top : 0px; background-image: url(../img/angle.png); /*background-image: url({% static 'img/angle.png' %});*/
 	 opacity : 1.0;}
-    .floating_block .flblock_text { background-color : #9BDCE4; position : absolute; left : 20px;
-     display : block; width : auto; max-width: 90%; height : 100%; padding : 3px; border-radius: 7px;}
-    .floating_block .flblock_text input[type="text"] {margin-left: 10px;}
+    .floating_block .flblock_text {background-color : #9BDCE4; position : relative; left : 20px; top : 0px;
+     display : block; width : auto; height: auto; padding: 5px; border-radius: 7px; margin-bottom: 5px;}
+    .floating_block .flblock_text .oname {font-size: 1.2em; font-weight: bolder;}
+    .floating_block .flblock_text .price {display: inline;}
+    .floating_block .flblock_text input[type="text"] {position : relative; left: 10px;}
     .floating_block .flblock_text .close_flblock {position : absolute; right : 0px; top: 0px; width : 20px;
      height : 20px; text-align : center; display : block; background-color: #999999;}
-	#order_button {top : 70px; position : absolute; text-align: center; left : 0px; width : 230px;
-	 height : 30px; background-color: transparent; display : block; z-index: 3;}
+    #fmenu_err {color: #ff0000; position: absolute; font-size: 12px; top : -15px; height: 25px; display: block; overflow: hidden;}
+	#order_button {top : 70px; position : absolute; text-align: center; left : 10px; width : 230px;
+	 height : auto; background-color: transparent; display : block; z-index: 3;}
+	#order_button input {margin-bottom: 10px; margin-top: 15px;}
 	#show_menu{position : absolute; left : -100px; top : -76px; display : block;
 	 background-color : transparent; cursor : pointer; text-align: left;}
 	#show_menu #show_menu_bkg {background-color: transparent; background-image: url(../img/pen.png);

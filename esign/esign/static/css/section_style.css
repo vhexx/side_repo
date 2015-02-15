@@ -22,10 +22,12 @@ input[type="submit"] {font-size: 20px; margin: 5px; border-radius: 0px; border-w
  width: 100%;}
 .str .name {display: table-cell; width: 40%; text-align: left; font-size: 20px;
  padding : 5px;}
+.str .name .oname, .str .name .oprice {display: inline;}
 .str .inputs {display: table-cell; vertical-align: middle; width: auto;
  text-align: center;}
-.str .inputs input {font-size: 16px;}
+.str .inputs {font-size: 16px;}
 .str_cell {width: 100%; text-align: center;}
+.str_cell div {font-size: 16px;}
 
  #commit_orders_list {font-size: 0px; width : 80%; table-layout: fixed; border-spacing: 0px;
  margin-left : auto; margin-right: auto; text-align: center;
