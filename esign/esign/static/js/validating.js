@@ -29,9 +29,9 @@ $(document).ready(function ()
                 if ( ($(this).val() != "") && ($(this).val() != "0") )
                 {
                   valid_fields_num += 1;
-                  order_str = order_str + "; " + $(this).closest(".order_info").find(".oname").text() + ", "
+                  order_str = order_str + $(this).closest(".order_info").find(".oname").text() + ", "
                               + $(this).closest(".order_info").find(".oprice").text() + "р."
-                              + " - " + $(this).val() + "шт.";
+                              + " - " + parseInt($(this).val()) + "шт.<br>";
                   order_price += parseInt($(this).closest(".order_info").find(".oprice").text())*parseInt($(this).val());
                 }
                 else
@@ -58,8 +58,10 @@ $(document).ready(function ()
             formInstance.submitEvent.preventDefault();
             $("#cart, #floating_menu").hide();
             $("#page_container #fquest").show();
-            $("#page_container #fquest .final_order_text").html(order_str.substr(1, (order_str.length-1)) );
-            $("#page_container #fquest .final_order_price").html(order_price);
+            $("#page_container #fquest .final_order_text").html(order_str);
+            $("#page_container #fquest .final_order_price").html(order_price+"р.");
+            var serialized_data = cur_form.serializeArray();
+            $.ajax({type : "POST", url : "/update_basket/", data : serialized_data});
           }
         }
       );

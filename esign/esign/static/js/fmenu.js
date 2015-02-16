@@ -198,6 +198,7 @@ $(document).ready(function ()
         var closed_indx = cutstr($(this).attr("id"), 6);
         var fhidden_hgt = fhidden.hgt;
         fhidden_hgt -= fblocks[closed_indx].hgt;
+        $(this).closest(".floating_block").find("input:text").val("");
         if (fblocks[closed_indx].vsbl == 1)
         {
           var closed_zindx = fblocks[closed_indx].z_index;

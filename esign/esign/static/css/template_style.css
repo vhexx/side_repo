@@ -65,7 +65,7 @@ input[type="text"] {max-width: 30px;}
     .floating_block .flblock_text {background-color : #9BDCE4; position : relative; left : 20px; top : 0px;
      display : block; width : auto; height: auto; padding: 5px; border-radius: 7px; margin-bottom: 5px;}
     .floating_block .flblock_text .oname {font-size: 1.2em; font-weight: bolder;}
-    .floating_block .flblock_text .price {display: inline;}
+    .floating_block .flblock_text .oprice {display: inline;}
     .floating_block .flblock_text input[type="text"] {position : relative; left: 10px;}
     .floating_block .flblock_text .close_flblock {position : absolute; right : 0px; top: 0px; width : 20px;
      height : 20px; text-align : center; display : block; background-color: #999999;}
