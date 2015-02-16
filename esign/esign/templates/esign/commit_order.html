@@ -2,24 +2,18 @@
 
 {% block 'content' %}
 <div id="section_header">Подтвердите ваш заказ</div>
-<form>
- <table id="commit_orders_list">
- 	здесь будет сделнный заказ
+<form data-parsley-validate class="commit_form">
+  <table id="commit_orders_list">
+  	<!--здесь заказы-->
     <tr class="str"><td class="str_cell" colspan="2"><input type="submit" value="подтвердить"></tr>
- </table>
+  </table>
 </form>
 <script>
  $(document).ready(function ()
- 	{
- 		$("#cart").hide();
- 		$("#floating_menu").hide();
- 	}
- );
- $("#commit_orders_list").on("click", ".str input:button", function ()
- 	{
- 		$(this).closest(".inputs").find("input:text").val("0");
-        $(this).closest(".str").hide();
- 	}
+  {
+    $("#cart").hide();
+    $("#floating_menu").hide();
+  }
  );
 </script>
 {% endblock %}

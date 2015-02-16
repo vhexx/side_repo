@@ -1,12 +1,4 @@
-<script>
-$(document).ready(function ()
-    {
-        $("#cart").hide();
-        $("#floating_menu").hide();
-    }
- );
-</script>
-<form name="final_form">
+<form name="final_form" data-parsley-validate>
     <table class="questionnaire">
         <tr class="str">
             <td class="str_cell" colspan="2">
@@ -19,15 +11,15 @@ $(document).ready(function ()
         </tr>
         <tr class="str">
             <td class="name">Имя :</td>
-            <td class="inputs"><input type="text" name="name"></td>
+            <td class="inputs"><input type="text" name="name" required data-parsley-required-message="Поле обязательно для заполнения"></td>
         </tr>
         <tr class="str">
             <td class="name">Адрес доставки :</td>
-            <td class="inputs"><input type="text" name="address"></td>
+            <td class="inputs"><input type="text" name="address" required data-parsley-required-message="Поле обязательно для заполнения"></td>
         </tr>
         <tr class="str">
             <td class="name">Контактный телефон :</td>
-            <td class="inputs"><input type="text" name="phone_number"></td>
+            <td class="inputs"><input type="text" name="phone_number" required data-parsley-required-message="Поле обязательно для заполнения"></td>
         </tr>
         <tr class="str">
             <td class="str_cell" colspan="2">
