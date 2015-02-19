@@ -1,6 +1,7 @@
-#section_header {font-size : 350%; text-align: center; padding-bottom: 10px;}
+.section_header {font-size : 350%; text-align: center; padding-bottom: 10px;}
 .video {display : block; text-align: center; height : 30%;}
 .text {font-size: 1.6em;}
+.img_block img {width: 200px; height: 200px;}
 input[type="submit"] {font-size: 20px; margin: 5px; border-radius: 0px; border-width: 3px;
  border-style : solid; border-color : #cccccc; background-color: #555555; background-image: none;
  color : #cccccc;}
