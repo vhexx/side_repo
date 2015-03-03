@@ -1,8 +1,20 @@
 <div id="cart">
-	Корзина
+    Корзина
     <div id="show_cart_orders">показать</div>
-    <div id="cart_image"><div id="cart_items_count">0</div></div>
-    <div id="cart_total_price">0</div> р.<br>
-    <input type="button" value="оформить заказ" id="go_to_ordering">
-    <div id="orders_list">пусто</div>
- </div>
+    <div id="cart_image"><div id="cart_items_count">{{count}}</div></div>
+    <div id="cart_total_price">{{sum}}</div> р.<br>
+    <input type="button" value="оформить заказ" id="go_to_ordering" class="btn2">
+    <div id="orders_list">
+        {% for i in product_list %}
+        <div id="{{i.1}} - {{i.2}}" class="item">
+            <form class="item_form">
+            {% csrf_token %}
+            <div class="order_txt">{{i.0}} - {{i.2}}р.</div>
+            количество: <input class="order_cnt" type="text" value="{{i.3}}">
+            <input class="change_cnt btn2" type="button" value="поменять">
+            <input class="remove_order btn2" type="button" value="убрать">
+            </form>
+        </div>
+        {% endfor %}
+    </div>
+  </div>

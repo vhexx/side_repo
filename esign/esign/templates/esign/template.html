@@ -33,7 +33,6 @@
       #header_content, #footer_content {width : 1200px; margin-left: 0px; left : 0%;}
       #content_area {width : 1000px; left : 0%; margin-left: 0px;}
       .sect {font-size: 16px;}
-      #navigation {top: -32px;}
       #cart {float : left; text-align : left; max-width : 60px;}
       #cart #orders_list {left : 200px;}
     </style>
@@ -58,12 +57,13 @@
   <div id="page_bkg"><div id="bkg_pattern"></div></div>
   <div id="header">
     <div id="header_content">
-      <div id="name">здесь будет название</div>
+      <img src="header2.png"></img>
+      <div id="name">В С Е &#160;&#160;П О Д П И С И.ru</div>
       <div id="contacts">здесь будут контактные данные</div>
     </div>
   </div>
-  <div id="content_area">
-    <div id="navigation">
+  <div id="navigation">
+    <div id="nav_tb">
       <div class="sect" id="sect1"><a href="/">Главная</a></div>
       <div class="sect" id="sect2"><a href="/faq">Что такое ЭЦП</a></div>
       <div class="sect" id="sect3"><a href="/order">Купить ЭЦП</a></div>
@@ -71,8 +71,138 @@
       <div class="sect" id="sect5"><a href="/info">Доставка и оплата</a></div>
       <div class="sect" id="sect6"><a href="/catalog">Сертификаты</a></div>
     </div>
+  </div>
+  <div id="content_area">
     <div id="content">
         {% block 'content' %}
+
+<div class="section_header">Как получить ЭЦП?</div>
+<div class="text">Для получения ЭЦП Вам нужно сделать всего лишь несколько простых шагов:</div>
+<table>
+  <tr>
+    <td class="img_cell">
+      <img src="../../static/img/click.svg" width="30%" height="auto"></img>
+    </td>
+    <td class="txt_cell">&#9675; Оставьте заявку на нашем сайте или по телефону.</td>
+  </tr>
+  <tr> <td></td> <td><hr></hr></td> </tr>
+  <tr>
+    <td class="img_cell">
+      <img src="../../static/img/phone.svg" width="30%" height="auto"></img>
+    </td>
+    <td class="txt_cell">&#9675; Через несколько минут с Вами свяжется оператор для согласования деталей заказа.</td>
+  </tr>
+  <tr> <td></td> <td><hr></hr></td> </tr>
+  <tr>
+    <td class="img_cell">
+      <img src="../../static/img/deliver.svg" width="25%" height="auto"></img>
+    </td>
+    <td class="txt_cell">&#9675; В назначенное Вами время и место прибудет курьер.</td>
+  </tr>
+  <tr> <td></td> <td><hr></hr></td> </tr>
+  <tr>
+    <td class="img_cell">
+      <img src="../../static/img/docs.svg" width="30%" height="auto"></img>
+    </td>
+    <td class="txt_cell">&#9675; Ознакомтесь с документацией.</td>
+  </tr>
+  <tr> <td></td> <td><hr></hr></td> </tr>
+  <tr>
+    <td class="img_cell">
+      <img src="../../static/img/hand.svg" width="70%" height="auto"></img>
+    </td>
+    <td class="txt_cell">&#9675; Оставьте образец подписи.</td>
+  </tr>
+  <tr> <td></td> <td><hr></hr></td> </tr>
+  <tr>
+    <td class="img_cell">
+      <img src="../../static/img/flash.svg" width="30%" height="auto"></img>
+    </td>
+    <td class="txt_cell">&#9675; Получите ключ ЭП на флеш-носителе.</td>
+  </tr>
+</table>
+<style>
+  table {table-layout: fixed; width: 100%;}
+  td {font-size: 18px;}
+  .img_cell {text-align: center; width : 30%;}
+  .txt_cell {width: auto;}
+  hr {color : #00ffff;}
+</style>
+
+<div class="section_header">Заказать ЭЦП</div>
+<div class="text">У нас Вы можете оформить заказ на электронную подпись сразу для нескольких человек. Вам нужно только определиться с количеством и типами интересующих Вас подписей и оставить заявку с контактными данными, после чего наш оператор свяжется с Вами. Следует помнить, что одно лицо может иметь не более одной ЭЦП.
+</div>
+<div id="products_list">
+    {% for i in products %}
+        <div id="{{i.1}}" class="product">
+            <form data-parsley-validate>
+                {% csrf_token %}
+                <div class="product_name">{{i.0}}</div>
+                  <div class="product_description">
+                    <div class="product_description_bkg">
+                      Описание товара<br>
+                      {{i.4}}
+                      Цена : <div class="product_price">{{i.2}}</div>р.<br>
+                    </div>
+                  </div>
+                  <div class="product_add">
+                    Введите количество :
+                    <input type="text" name="{{i.1}}" class="product_count" data-parsley-type="digits" data-parsley-trigger="keyup" data-parsley-type-message="Введите количество цифрами" data-parsley-validation-threshold="0">
+                    <input type="button" value="Добавить" class="btn2">
+                  </div>
+            </form>
+        </div>
+    {% endfor %}
+</div>
+
+<div class="final_order">    
+    Ваш заказ :<br> <div class="final_order_text">заказ</div><br>
+  Итого : <div class="final_order_price">цена заказа</div><br>
+</div>
+<div class="text">Пожалуйста, введите контактные данные в анкету и отсавьте заявку. Оператор свяжется с Вами в течение нескольких минут</div>
+<form name="final_form" data-parsley-validate>
+    <table class="questionnaire">
+      <tr class="str">
+        <td class="name">Имя* :</td>
+        <td class="inputs"><input type="text" name="name" required data-parsley-required-message="Поле обязательно для заполнения"></td>
+      </tr>
+      <tr class="str">
+        <td class="name">Фамилия :</td>
+        <td class="inputs"><input type="text" name="surname"></td>
+    </tr>
+        <tr class="str">
+        <td class="name">Адрес доставки* :</td>
+        <td class="inputs"><input type="text" name="address" required data-parsley-required-message="Поле обязательно для заполнения"></td>
+    </tr>
+    <tr class="str">
+        <td class="name">Контактный телефон* :</td>
+        <td class="inputs"><input type="text" name="phone_number" required data-parsley-required-message="Поле обязательно для заполнения"></td>
+    </tr>
+    <tr class="str">
+        <td class="name">e-mail :</td>
+        <td class="inputs"><input type="text" name="email"></td>
+    </tr>
+    <tr class="str">
+        <td class="name">Способ оплаты :</td>
+        <td class="inputs">
+          <select name="payment_way">
+            <option value="cash" selected>Наличными</option>
+                <option value="card">Банковской картой</option>
+              </select>
+          </td>
+      </tr>
+      <tr class="str">
+          <td class="name">Дополнительная информация :</td>
+          <td class="inputs"><input type="text" name="addinfo"></td>
+      </tr>
+      <tr class="str">
+        <td class="str_cell" colspan="2">
+          <input class="send_app btn1" type="submit" value="Оставить заявку">
+        </td>
+      </tr>
+  </table>
+</form>
+
         {% endblock %}
     </div>
   </div>
@@ -114,9 +244,10 @@
         </tr>
         <tr class="str">
             <td class="str_cell" colspan="2">
-                <input class="send_app" type="submit" value="Оставить заявку">
+                <input class="send_app btn1" type="submit" value="Оставить заявку">
             </td>
         </tr>
+        <div id="close_fquest">&#215;</div>
     </table>
 </form>
 
@@ -136,9 +267,9 @@
       <div id="fiz" class="floating_block">
         <div class="angle"></div>
         <div class="flblock_text order_info">
-          <input type="button" class="close_flblock" id="close_fiz" value="-">
-          <div class="oname">Подпись 1</div>
-          <div class="flblock_description">описание</div>
+          <input type="button" class="close_flblock" id="close_fiz" value="x">
+          <div class="oname">Подпись для физ. лица</div>
+          <div class="flblock_description"><a href="google.com">Подробное описание</a></div>
           Цена : <div class="oprice">1000</div>р.<br>
           введите количество<input type="text" name="num1" data-parsley-type="digits" data-parsley-trigger="keyup" data-parsley-errors-container="#fmenu_err" data-parsley-type-message="Введите цифры" data-parsley-validation-threshold="0">
         </div>
@@ -146,9 +277,9 @@
       <div id="yur" class="floating_block">
         <div class="angle"></div>
         <div class="flblock_text order_info">
-          <input type="button" class="close_flblock" id="close_yur" value="-">
-          <div class="oname">Подпись 2</div>
-          <div class="flblock_description">описание</div>
+          <input type="button" class="close_flblock" id="close_yur" value="x">
+          <div class="oname">Подпись для юр. лица</div>
+          <div class="flblock_description"><a href="google.com">Подробное описание</a></div>
           Цена : <div class="oprice">2000</div>р.<br>
           введите количество<input type="text" name="num2" data-parsley-type="digits" data-parsley-trigger="keyup" data-parsley-errors-container="#fmenu_err" data-parsley-type-message="Введите цифры" data-parsley-validation-threshold="0">
         </div>
@@ -156,16 +287,16 @@
       <div id="ip" class="floating_block">
         <div class="angle"></div>
         <div class="flblock_text order_info">
-          <input type="button" class="close_flblock" id="close_ip" value="-">
-          <div class="oname">Подпись 3</div>
-          <div class="flblock_description">описание</div>
+          <input type="button" class="close_flblock" id="close_ip" value="x">
+          <div class="oname">Подпись для ИП</div>
+          <div class="flblock_description"><a href="google.com">Подробное описание</a></div>
           Цена : <div class="oprice">3000</div>р.<br>
           введите количество<input type="text" name="num3" data-parsley-type="digits" data-parsley-trigger="keyup" data-parsley-errors-container="#fmenu_err" data-parsley-type-message="Введите цифры" data-parsley-validation-threshold="0">
         </div>
       </div>
       <div id="order_button">
         <div id="fmenu_err"></div>
-        <input type="submit" value="заказать">
+        <input type="submit" value="заказать" class="btn1">
       </div>
     </form>
     <div id="show_menu">
@@ -179,14 +310,14 @@
     <div id="show_cart_orders">показать</div>
     <div id="cart_image"><div id="cart_items_count">{{count}}</div></div>
     <div id="cart_total_price">{{sum}}</div> р.<br>
-    <input type="button" value="оформить заказ" id="go_to_ordering">
+    <input type="button" value="оформить заказ" id="go_to_ordering" class="btn2">
     <div id="orders_list">
         {% for i in product_list %}
         <div id="{{i.1}} - {{i.2}}" class="item">
             <form class="item_form">
             {% csrf_token %}
             <div class="order_txt">{{i.0}} - {{i.2}}р.</div>
-            количество: <input class="order_cnt" type="text">{{i.3}}</input>
+            количество: <input class="order_cnt" type="text" value="{{i.3}}">
             <input class="change_cnt" type="button" value="поменять">
             <input class="remove_order" type="button" value="убрать">
             </form>
