@@ -40,12 +40,12 @@
 .final_order_text, .final_order_price {font-weight: normal; display: inline-block;}
 .final_order#fast {font-size: 1.2em;}
 .questionnaire {font-size : 1.8em; text-align: left; margin-left : 20%; margin-top: 2em; width: 60%;
- background-color: #eeeeee; display: table; position: relative; padding: 0.5em; border-spacing: 0px;
+ background-color: #ffffff; display: table; position: relative; padding: 0.5em; border-spacing: 0px;
  border-radius: 10px;
  -webkit-border-radius: 10px; 
  -moz-border-radius: 10px; 
  -khtml-border-radius: 10px;
- border : 1px #777777 solid;}
+ box-shadow: 0.25em 0.25em 0.25em rgba(0,0,0,0.4), 0em 0em 1.0em rgba(0,0,0,0.2) inset;}
 .questionnaire .str .inputs {text-align: left;}
 .questionnaire .str .inputs input[type="text"] {width: 200px; max-width: 200px;}
 .questionnaire .str .inputs input[name="addinfo"], .questionnaire .str .inputs input[name="address"] {width: 300px; max-width: 300px;}
