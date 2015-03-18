@@ -1,19 +1,22 @@
-.section_header {font-size : 350%; text-align: center; padding-bottom: 10px; font-family: courier; color : #0039A2; font-weight: bold;}
+.section_header {font-size : 350%; text-align: center; padding-bottom: 10px; font-family: garamond; color : #0039A2; font-weight: bold;}
 .video {display : block; text-align: center; height : 30%;}
 .text {font-size: 1.6em;}
+#content {font-family: sans-serif;}
 
-#products_list {font-size: 0px; width : 95%; margin-right: auto; margin-left: auto; table-layout: fixed;
+#products_list {font-size: 0px; width : 95%; left : 2.5%; table-layout: fixed;
  font-weight: normal; position: relative; text-align: left; border-spacing: 0px; display: table}
-.product {width : 100%; position: relative; display: table-row;}
+.product, .product form {width : 100%; position: relative; display: table-row;}
 .product .product_name {vertical-align: middle; width : 30%; font-size: 20px;
- font-weight: bolder; text-align: center; color : #0039A2; display: table-cell;}
-.product .product_description {font-size: 16px; width: 48%; padding: 10px; display: table-cell;}
+ font-weight: bolder; text-align: center; color : #0039A2; display: table-cell; position: relative;}
+.product .product_description {font-size: 16px; width: 48%; padding: 0.7em; display: table-cell;}
 .product_description_bkg {height : auto; width: auto; display: block;
  border-left: 1px #bbbbbb solid; padding-left: 5px;}
 .product .product_description .product_price {display: inline;}
 .product .product_add {font-size: 16px; vertical-align: middle;
  text-align: center; padding: 5px; width : auto; display: table-cell;}
-.product_name, .product_description, .product_add {border-bottom : 1px #bbbbbb solid;}
+.product_name, .product_description, .product_add {border-bottom : 1px #bbbbbb solid; position: relative;}
+.product .parsley-errors-list {margin : 0; padding : 0; display: block; text-align: left; width: 10em; color : #ff0000;}
+.product_name img { width : 70%;}
 
 .str {text-align: left; position: relative; width: 100%;
  width: 100%;}
@@ -39,7 +42,7 @@
 .final_order {font-size: 1.8em; width : auto; text-align: center; font-weight: bolder; position: relative;}
 .final_order_text, .final_order_price {font-weight: normal; display: inline-block;}
 .final_order#fast {font-size: 1.2em;}
-.questionnaire {font-size : 1.8em; text-align: left; margin-left : 20%; margin-top: 2em; width: 60%;
+.questionnaire {font-size : 1.8em; text-align: left; left : 20%; margin-top: 2em; width: 60%;
  background-color: #ffffff; display: table; position: relative; padding: 0.5em; border-spacing: 0px;
  border-radius: 10px;
  -webkit-border-radius: 10px; 

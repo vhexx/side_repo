@@ -7,12 +7,12 @@
     <div id="orders_list">
         {% for i in product_list %}
         <div id="{{i.1}} - {{i.2}}" class="item">
-            <form class="item_form">
+            <form class="item_form" data-parsley-validate>
             {% csrf_token %}
             <div class="order_txt">{{i.0}} - {{i.2}}р.</div>
-            количество: <input class="order_cnt" type="text" value="{{i.3}}">
-            <input class="change_cnt btn2" type="button" value="поменять">
-            <input class="remove_order btn2" type="button" value="убрать">
+            количество: <input class="order_cnt" type="text" value="{{i.3}}" data-parsley-type="digits" data-parsley-trigger="keyup" data-parsley-errors-container="#err{{i.1}}" data-parsley-type-message="Введите цифры" data-parsley-validation-threshold="0">
+            <input class="change_cnt btn3" type="button" value="поменять"><input class="remove_order btn3" type="button" value="убрать">
+            <div id="err{{i.1}}" class="item_err"></div>
             </form>
         </div>
         {% endfor %}

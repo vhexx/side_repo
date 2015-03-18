@@ -25,9 +25,15 @@ function addtocart (prod_id, prod_num, prod_name, prod_price)
 	  	$("<input>", {"class" : "order_cnt", "type" : "text", "value" : prod_num}).appendTo(new_form);
 	  	$("<input>", {"class" : "change_cnt", "type" : "button", "value" : "изменить"}).appendTo(new_form);
 	  	$("<input>", {"class" : "remove_order", "type" : "button", "value" : "убрать"}).appendTo(new_form);*/
-	  	var new_form_html = '<form class="item_form" data-parsley-validate><div class="order_txt">'+prod_name+' - '+prod_price+'р.</div>количество: <input class="order_cnt" value='+prod_num+' type="text" data-parsley-type="digits" data-parsley-trigger="keyup"><input class="change_cnt" type="button" value="поменять"><input class="remove_order" type="button" value="убрать"></form>';
-	    new_item = new_item.append(new_form_html);
-	    new_item.find(".item_form").parsley();
+	  	//var new_form_html = '<form class="item_form" data-parsley-validate>{% csrf_token %}<div class="order_txt">'+prod_name+' - '+prod_price+'р.</div>количество: <input class="order_cnt" value='+prod_num+' type="text" data-parsley-type="digits" data-parsley-trigger="keyup"><input class="change_cnt btn3" type="button" value="поменять"><input class="remove_order btn3" type="button" value="убрать"></form>';
+	    //new_item = new_item.append(new_form_html);
+	    new_item.load("cart_item_form.html", function () {
+	    	new_item.find(".order_txt").text(prod_name+" - "+prod_price+".р");
+	    	new_item.find(".order_cnt").val(prod_num);
+	    	new_item.find(".order_cnt").attr({"data-parsley-errors-container" : "#err"+prod_id});
+	    	new_item.find(".item_err").attr({"id" : "err"+prod_id});
+	    	new_item.find(".item_form").parsley();
+	    });
 	}
 }
 $(document).ready(function ()

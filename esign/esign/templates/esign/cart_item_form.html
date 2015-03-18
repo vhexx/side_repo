@@ -1,8 +1,8 @@
-<div id="{{sign_id}}-{{sign_count}}" class="item">
-	<form class="item_form" data-parsley-validate>
-	    <div class="order_txt">{{sign_name}} - {{sign_price}}р.</div>
-	    количество: <input class="order_cnt" type="text" data-parsley-type="digits" data-parsley-trigger="keyup" data-parsley-validation-threshold="0" data-parsley-type-message="Введите цифры">
-	    <input class="change_cnt" type="button" value="поменять">
-	    <input class="remove_order" type="button" value="убрать">
+
+    <form class="item_form" data-parsley-validate>
+        {% csrf_token %}
+        <div class="order_txt"></div>
+        количество: <input class="order_cnt" type="text" value="" data-parsley-type="digits" data-parsley-trigger="keyup" data-parsley-errors-container="" data-parsley-type-message="Введите цифры" data-parsley-validation-threshold="0">
+        <input class="change_cnt btn3" type="button" value="поменять"><input class="remove_order btn3" type="button" value="убрать">
+        <div id="" class="item_err"></div>
     </form>
-</div>
