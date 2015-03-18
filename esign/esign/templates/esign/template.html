@@ -313,11 +313,11 @@
     <input type="button" value="оформить заказ" id="go_to_ordering" class="btn2">
     <div id="orders_list">
         {% for i in product_list %}
-        <div id="{{i.1}} - {{i.2}}" class="item">
-            <form class="item_form">
-            git 
+        <div id="{{i.1}}-{{i.3}}" class="item">
+            <form class="item_form" data-parsley-validate="" novalidate="">
+            {% csrf_token %}
             <div class="order_txt">{{i.0}} - {{i.2}}р.</div>
-            количество: <input class="order_cnt" type="text" name="{{i.1}}" value="{{i.3}}">
+            количество: <input class="order_cnt" type="text" name="{{i.1}}" value="{{i.3}}" data-parsley-type="digits" data-parsley-trigger="keyup">
             <input class="change_cnt" type="button" value="поменять">
             <input class="remove_order" type="button" value="убрать">
             </form>
