@@ -5,17 +5,18 @@ from django.db import models
 class Types(models.Model):
     name = models.CharField(max_length=50)
     parent = models.ForeignKey('self', null=True)
-
+    def __str__(self):
+        return str(self.name)
 
 class Attributes(models.Model):
     name = models.CharField(max_length=50)
     datatype = models.CharField(max_length=5)
     type = models.ForeignKey('Types', null=True)
-
+    def __str__(self):
+        return str(self.name)
 
 class Entities(models.Model):
     type = models.ForeignKey('Types', null=True)
-
 
 class Parameters(models.Model):
     entity = models.ForeignKey('Entities', null=True)

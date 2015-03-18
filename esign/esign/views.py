@@ -42,20 +42,40 @@ def render_with_basket(request, html, data=None):
     return render(request, html, data)
 
 
+# Методы для изменения содержимого таблицы
+
 def add_to_basket(request):
+    print(dict(request.POST))
     if request.method == 'POST':
         for i in range(1, max_id + 1):
             val = request.POST.get(str(float(i)))
-            if val is not None and val is not 0:
-                key = str(i)
-                if key not in request.session:
-                    request.session[key] = val
-                else:
-                    request.session[key] = int(request.session[key]) + int(val)
-                request.session.modified = True
-        print('basket:', dict(request.session))
+            if val is not None:
+                val = int(val)
+                if val > 0:
+                    key = str(i)
+                    if key not in request.session:
+                        request.session[key] = val
+                    else:
+                        request.session[key] += val
+            request.session.modified = True
     return catalog(request)
 
+
+def update_basket(request):
+    print(dict(request.POST))
+    if request.method == 'POST':
+        for i in range(1, max_id + 1):
+            val = request.POST.get(str(float(i)))
+            if val is not None:
+                val = int(val)
+                if val > -1:
+                    key = str(i)
+                    request.session[key] = val
+                    request.session.modified = True
+    return catalog(request)
+
+
+# Удаление содержимого корзины
 
 def drop_basket(request):
     request.session.clear()
@@ -72,7 +92,7 @@ def calc(request):
     count = 0
     sum = 0
     product_list = []
-    #print('ses:', dict(request.session))
+    # print('ses:', dict(request.session))
     for i in range(1, max_id + 1):
         key = str(i)
         if key in request.session:
@@ -82,7 +102,7 @@ def calc(request):
             # name, id, price, count
             example_count = int(request.session[key])
             price = float(params_list[2])
-            product_list.append((str(params_list[0]), str(int(params_list[1])), int(price), str(example_count)))
+            product_list.append((str(params_list[0]), str(float(params_list[1])), int(price), str(example_count)))
             count += example_count
             sum += example_count * price
     return int(count), int(sum), product_list
