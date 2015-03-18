@@ -25,8 +25,8 @@ function addtocart (prod_id, prod_num, prod_name, prod_price)
 	  	$("<input>", {"class" : "order_cnt", "type" : "text", "value" : prod_num}).appendTo(new_form);
 	  	$("<input>", {"class" : "change_cnt", "type" : "button", "value" : "изменить"}).appendTo(new_form);
 	  	$("<input>", {"class" : "remove_order", "type" : "button", "value" : "убрать"}).appendTo(new_form);*/
-	  	var new_form_html = '<form class="item_form" data-parsley-validate><div class="order_txt">'+prod_name+' - '+prod_price+'р.</div>количество: <input class="order_cnt" value='+prod_num+' type="text" data-parsley-type="digits" data-parsley-trigger="keyup"><input class="change_cnt" type="button" value="поменять"><input class="remove_order" type="button" value="убрать"></form>';
-	    new_item = new_item.append(new_form_html);
+	  	var csrftoken = getCookie('csrftoken');
+	  	var new_form_html = '<form class="item_form" data-parsley-validate><input type="hidden" value="'+getCookie('csrftoken')+'" name="csrfmiddlewaretoken"><div class="order_txt">'+prod_name+' - '+prod_price+'р.</div>количество: <input class="order_cnt" value='+prod_num+' type="text" data-parsley-type="digits" data-parsley-trigger="keyup"><input class="change_cnt" type="button" value="поменять"><input class="remove_order" type="button" value="убрать"></form>';	    new_item = new_item.append(new_form_html);
 	    new_item.find(".item_form").parsley();
 	}
 }
@@ -112,6 +112,7 @@ $(document).ready(function ()
 				    var total_price = parseInt($("#cart #cart_total_price").text());
 //AJAX при изменении количества элементов в корзине				    
 				    var serialized_data = $(this).closest(".item").find("form").serializeArray();
+				    alert(serialized_data);
 					$.ajax({type : "POST", url : "/update_basket/", data : serialized_data});
 //-------------------------------------------------
 					$(this).closest(".item").attr({"id" : item_id+"-"+new_cnt});
@@ -143,3 +144,20 @@ $(document).ready(function ()
 		);
 	}
 );
+
+// Получение кук для csrf token
+function getCookie(name) {
+    var cookieValue = null;
+    if (document.cookie && document.cookie != '') {
+        var cookies = document.cookie.split(';');
+        for (var i = 0; i < cookies.length; i++) {
+            var cookie = jQuery.trim(cookies[i]);
+            // Does this cookie string begin with the name we want?
+            if (cookie.substring(0, name.length + 1) == (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+}

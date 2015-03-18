@@ -10,7 +10,7 @@
             <form class="item_form">
             {% csrf_token %}
             <div class="order_txt">{{i.0}} - {{i.2}}р.</div>
-            количество: <input class="order_cnt" type="text" value="{{i.3}}">
+            количество: <input class="order_cnt" type="text" name="c{{i.1}}" value="{{i.3}}">
             <input class="change_cnt btn2" type="button" value="поменять">
             <input class="remove_order btn2" type="button" value="убрать">
             </form>

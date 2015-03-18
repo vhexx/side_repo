@@ -42,6 +42,8 @@ def render_with_basket(request, html, data=None):
     return render(request, html, data)
 
 
+# Методы для изменения содержимого таблицы
+
 def add_to_basket(request):
     if request.method == 'POST':
         for i in range(1, max_id + 1):
@@ -56,6 +58,14 @@ def add_to_basket(request):
         print('basket:', dict(request.session))
     return catalog(request)
 
+
+def update_basket(request):
+    if request.method == 'POST':
+        print(dict(request.POST))
+    return catalog(request)
+
+
+# Удаление содержимого корзины
 
 def drop_basket(request):
     request.session.clear()
@@ -72,7 +82,7 @@ def calc(request):
     count = 0
     sum = 0
     product_list = []
-    #print('ses:', dict(request.session))
+    # print('ses:', dict(request.session))
     for i in range(1, max_id + 1):
         key = str(i)
         if key in request.session:
